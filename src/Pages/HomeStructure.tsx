@@ -1,6 +1,6 @@
 import "./CSS/HomeStructure.css";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import { Home } from "./Home";
+import Home from "./Home";
 import images from "../Images/images";
 import { FaSearch } from "react-icons/fa";
 
@@ -16,7 +16,17 @@ export function HomeStructure(): JSX.Element {
           </li>
           <li className="navegador-item">
             <Link className="links" to="/">
-              Home2
+              Films
+            </Link>
+          </li>
+          <li className="navegador-item">
+            <Link className="links" to="/">
+              Noticias
+            </Link>
+          </li>
+          <li className="navegador-item">
+            <Link className="links" to="/">
+              Recomendaciones
             </Link>
           </li>
           <div className="div-formulario-busqueda">
@@ -39,7 +49,7 @@ export function HomeStructure(): JSX.Element {
       <div className="contenido">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home collapsed={true}/>
           </Route>
           <Route path="/">404</Route>
         </Switch>

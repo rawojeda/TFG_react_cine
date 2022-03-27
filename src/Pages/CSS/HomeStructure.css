@@ -8,10 +8,7 @@
     margin-right: 1%;
     margin-left: 1%;
     width: 98%;
-    /* esto solo por ahora */
-    height: 100px;
-    background-color: darkgray;
-    position: relative;
+    display: flex;
 }
 .navegador{
     display: flex;
