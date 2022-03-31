@@ -1,10 +1,4 @@
-.cabecera{
-    width: 98%;
-    background-color: gray;
-}
 .contenido{
-
-    width: 98%;
     display: flex;
     background-color: rgb(126, 125, 125);
 }
@@ -16,10 +10,28 @@
     margin: 0;
     align-items: center;
 }
+.navegador-items-toggle{
+    display: none;
+}
 .navegador-item{
     margin: 0px 10px 0px 10px; 
-    place-self: center;
 }
+@media screen and (max-width: 773px) {
+    .navegador-item {
+      display: none;
+    }
+    .navegador-items-toggle{
+        display: flex;
+        color: white;
+        background:none;
+        border: none;
+        font-size: x-large;
+        justify-content: flex-end;
+        width: -webkit-fill-available;
+        cursor: pointer;
+    }
+    
+  }
 .links{
     text-decoration: none;
     color: #C2C7CB;
@@ -28,34 +40,36 @@
 .links:hover{
     color: white;
 }
-.div-formulario-busqueda{
-    right: 35%;
-    width: 30%;
+.search_and_profile{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: -webkit-fill-available;
 }
 .formulario-busqueda{
-    width: 100%;
+    margin: 0px 10px 0px 10px; 
     position: relative;
+    width: 300px;
 }
 .Buscador{
     border-radius: 4px;
-    width: 100%;
     height: 25px;
+    width: -webkit-fill-available;
 }
 .search-button{
     position: absolute;
     cursor: pointer;
-    right: -6px;
+    right: 0px;
     top: 8px;
     border: none;
     background: none;
 }
 .profile-button{
-    margin-left: 10px;
+    margin-right: 3px;
     border: none;
     padding: unset;
-    height:48px;
+    height:40px;
     cursor: pointer;
-    
 }
 .profile-img{
     width: 40px;

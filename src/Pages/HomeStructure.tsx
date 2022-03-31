@@ -2,34 +2,32 @@ import "./CSS/HomeStructure.css";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import images from "../Images/images";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch,FaBars } from "react-icons/fa";
+import {MenuItems} from "../Components/MenuItems";
+import { useEffect, useState } from "react";
+
 
 export function HomeStructure(): JSX.Element {
+  const [toggle_a, setToggle_a]= useState(false);
+  const showitems= () => setToggle_a(!!!toggle_a);
+  useEffect(() => {
+   console.log(toggle_a);
+  }, [toggle_a])
+  
   return (
     <Router>
       <div className="cabecera">
         <ul className="navegador">
-          <li className="navegador-item">
+          <li className="navegador-item-home">
             <Link className="links" to="/">
               <img src={images.popcorn} alt="popcorn"></img>
             </Link>
           </li>
-          <li className="navegador-item">
-            <Link className="links" to="/">
-              Films
-            </Link>
-          </li>
-          <li className="navegador-item">
-            <Link className="links" to="/">
-              Noticias
-            </Link>
-          </li>
-          <li className="navegador-item">
-            <Link className="links" to="/">
-              Recomendaciones
-            </Link>
-          </li>
-          <div className="div-formulario-busqueda">
+          <button className="navegador-items-toggle" onClick={showitems}>
+            <FaBars/>
+          </button>
+          <MenuItems/>
+          <div className="search_and_profile">
             <form className="formulario-busqueda">
               <input
                 type="text"
@@ -40,16 +38,20 @@ export function HomeStructure(): JSX.Element {
                 <FaSearch />
               </button>
             </form>
+            <button className="profile-button" type="submit">
+              <img
+                className="profile-img"
+                src={images.profile}
+                alt="popcorn"
+              ></img>
+            </button>
           </div>
-          <button className="profile-button" type="submit">
-            <img className="profile-img" src={images.profile} alt="popcorn"></img>
-          </button>
         </ul>
       </div>
       <div className="contenido">
         <Switch>
           <Route exact path="/">
-            <Home collapsed={true}/>
+            <Home collapsed={true} />
           </Route>
           <Route path="/">404</Route>
         </Switch>
