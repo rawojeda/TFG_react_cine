@@ -1,14 +1,12 @@
 .cabecera{
-    margin-right: 1%;
-    margin-left: 1%;
     width: 98%;
     background-color: gray;
 }
 .contenido{
-    margin-right: 1%;
-    margin-left: 1%;
+
     width: 98%;
     display: flex;
+    background-color: rgb(126, 125, 125);
 }
 .navegador{
     display: flex;
@@ -32,14 +30,11 @@
 }
 .div-formulario-busqueda{
     right: 35%;
-    position: absolute;
-    align-items: center;
     width: 30%;
 }
 .formulario-busqueda{
     width: 100%;
     position: relative;
-    display: flex;
 }
 .Buscador{
     border-radius: 4px;
@@ -49,20 +44,20 @@
 .search-button{
     position: absolute;
     cursor: pointer;
-    right: 0;
+    right: -6px;
     top: 8px;
     border: none;
     background: none;
 }
 .profile-button{
-    position: absolute;
-    right: 1.5%;
+    margin-left: 10px;
     border: none;
     padding: unset;
     height:48px;
     cursor: pointer;
+    
 }
 .profile-img{
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
 }
