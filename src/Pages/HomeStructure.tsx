@@ -3,17 +3,27 @@ import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import images from "../Images/images";
 import { FaSearch,FaBars } from "react-icons/fa";
-import {MenuItems} from "../Components/MenuItems";
-import { useEffect, useState } from "react";
+import MenuItems from "../Components/MenuItems";
+import React from "react";
 
+interface IHomeState {
+  toggle_press: boolean;
+  searchText: string;
+}
 
-export function HomeStructure(): JSX.Element {
-  const [toggle_a, setToggle_a]= useState(false);
-  const showitems= () => setToggle_a(!!!toggle_a);
-  useEffect(() => {
-   console.log(toggle_a);
-  }, [toggle_a])
-  
+class HomeStructure extends React.Component<{}, IHomeState> {
+  constructor(props: {}) {
+    super(props);
+    this.state = { toggle_press: false, searchText: ""};
+  }
+
+  public showitems = () => {
+    this.setState({toggle_press: !!!this.state.toggle_press})
+  };
+  public onSearchTextChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
+    this.setState({searchText: event.target.value});
+  }
+public render(){
   return (
     <Router>
       <div className="cabecera">
@@ -23,16 +33,19 @@ export function HomeStructure(): JSX.Element {
               <img src={images.popcorn} alt="popcorn"></img>
             </Link>
           </li>
-          <button className="navegador-items-toggle" onClick={showitems}>
+          {/* {this.state.toggle_press ? <MenuItems estilo='menu1'/> : null}  */}
+          <button className="navegador-items-toggle" onClick={this.showitems}>
             <FaBars/>
           </button>
-          <MenuItems/>
+          <MenuItems />
           <div className="search_and_profile">
-            <form className="formulario-busqueda">
+            <form className="formulario-busqueda"> {/*antes era un form*/}
               <input
                 type="text"
                 className="Buscador"
                 placeholder="Seven, Martin Escorsese..."
+                value={this.state.searchText}
+                onChange={this.onSearchTextChange}
               />
               <button className="search-button" type="submit">
                 <FaSearch />
@@ -56,6 +69,11 @@ export function HomeStructure(): JSX.Element {
           <Route path="/">404</Route>
         </Switch>
       </div>
+      <div className="pie_pagina">
+        PIE DE PÁGINA
+      </div>
     </Router>
   );
 }
+}
+export default HomeStructure;

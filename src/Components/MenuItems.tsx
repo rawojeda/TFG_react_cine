@@ -1,22 +1,27 @@
 import { Link } from "react-router-dom";
-import { JsxElement } from "typescript";
+import React from "react";
 
 
-
-export function MenuItems(): JSX.Element{
-    //obviamente hay que cambiar el any del films y especidicar tanto en 
-    //home como aquí el tipo de films(el array vaya)
-    return (<><li className="navegador-item">
+class MenuItems extends React.Component<{}, {}> {
+  public render(){
+    return <>
+    <li className="navegador-item">
       <Link className="links" to="/">
-        Films
+        Peliculas
       </Link>
-    </li><li className="navegador-item">
-        <Link className="links" to="/">
-          Noticias
-        </Link>
-      </li><li className="navegador-item">
-        <Link className="links" to="/">
-          Recomendaciones
-        </Link>
-      </li></>);
+    </li>
+    <li className="navegador-item">
+      <Link className="links" to="/">
+        Noticias
+      </Link>
+    </li>
+    <li className="navegador-item">
+      <Link className="links" to="/">
+        Recomendaciones
+      </Link>
+    </li>
+  </>;
+  }
 }
+export default MenuItems;
+
