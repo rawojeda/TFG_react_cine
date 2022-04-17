@@ -1,0 +1,23 @@
+.Navegador-Desplegable{
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+}
+.Navegador-desplegable-item{
+    list-style: none;
+    margin: auto;
+    padding-bottom: 10px;
+}
+@media screen and (min-width: 669px) {
+    .Navegador-Desplegable{
+        display:none;
+    }
+}
+
+.formulario-busqueda-desplegable{
+    position: relative;
+    margin-left:auto;
+    height: -webkit-fill-available;
+
+}

@@ -1,88 +1,10 @@
-.navegador{
-    display: flex;
-    list-style: none;
-    background-color: black;
-    padding-left: 0;
-    margin: 0;
-    align-items: center;
-    color: #C2C7CB;
-}
-.navegador-items-toggle{
-    display: none;
-}
-.navegador-item{
-    margin: 0px 10px 0px 10px; 
-}
-@media screen and (max-width: 773px) {
-        /* faltaria hacer que cuando la pantalla sea un movil,
-    se viese de x forma */
-    .navegador-item {
-      display: none;
-    }
-    .navegador-items-toggle{
-        display: flex;
-        color: #C2C7CB;
-        background:none;
-        border: none;
-        font-size: x-large;
-        justify-content: flex-end;
-        width: -webkit-fill-available;
-        cursor: pointer;
-    }
-  }
-.links{
-    text-decoration: none;
-    color: #C2C7CB;
-    cursor: pointer;
-}
-.links:hover{
-    color: white;
-}
-.search_and_profile{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: -webkit-fill-available;
-}
-.formulario-busqueda{
-    margin: 0px 10px 0px 10px; 
-    position: relative;
-    width: 330px;
-}
-.Buscador{
-    border-radius: 4px;
-    height: 25px;
-    width: -webkit-fill-available;
-}
-.search-button{
-    position: absolute;
-    cursor: pointer;
-    right: 0px;
-    top: 8px;
-    border: none;
-    background: none;
-}
-.profile-button{
-    margin-right: 3px;
-    border: none;
-    padding: unset;
-    height:40px;
-    cursor: pointer;
-}
-.profile-img{
-    width: 40px;
-    height: 40px;
-}
-
-
-
 .contenido{
-    display: flex;
-    background-color: rgb(126, 125, 125);
+    background-color: #a58a8a;
+    padding: 5px 0px 5px 0px;
 }
 
 .pie_pagina{
-    background-color: black;
+    background-color: #3e3e40;;
     color: #C2C7CB;
     text-align: center;
     padding: 5px 0px 5px 0px;

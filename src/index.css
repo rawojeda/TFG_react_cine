@@ -1,14 +1,15 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'sans-serif,' 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   margin-top: 0px;
   margin-right: 2%;
   margin-bottom: 0px;
   margin-left: 2%;
+  background-color: #bbbbbb;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: 'Courier New',
     monospace;
 }

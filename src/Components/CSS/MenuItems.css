@@ -1,0 +1,14 @@
+.routes{
+    list-style: none;
+    display: flex;
+    float: left;
+    height: -webkit-fill-available;
+    place-items: center;
+}
+.links{
+    text-decoration: none;
+    color: #C2C7CB;
+    cursor: pointer;
+    padding-right: 10px;
+}
+.links:hover{mix-blend-mode:color-dodge;}

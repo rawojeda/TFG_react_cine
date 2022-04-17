@@ -1,0 +1,78 @@
+/* cabecera */
+.cabecera{
+    display: flex;
+    align-items: center;
+}
+
+/* navegador */
+.navegador{
+    background-color: #3e3e40;
+}
+
+/* logo */
+.logo{
+    padding: 3px 15px 0px 5px;
+}
+
+/* toggle desplegable */
+.toggle{
+    display: none;
+    padding: 2px 0px 0px 5px;
+}
+.toggle-button{
+    color: #8389d7;
+    background-color: unset;
+    border: none;
+    cursor: pointer;
+    font-size: 32px;
+    padding-top: 0px;
+}
+.toggle-button:hover{mix-blend-mode: hard-light;}
+/* perfil */
+.profile-div{
+    padding: 5px 0px 0px 0px;
+}
+
+/* perfil y logo */
+.image-nav{
+    color: #8389d7;
+    background-color: unset;
+    border: none;
+    cursor: pointer;
+    font-size: 42px;
+}
+.image-nav:hover{mix-blend-mode: hard-light;}
+
+/* formulario de busqueda */
+.formulario-busqueda{
+    position: relative;
+    margin-left:auto;
+    height: -webkit-fill-available;
+    padding-right: 10px;
+}
+@media screen and (max-width: 669px) {
+    .profile-div{
+        margin-left: auto;
+    }
+    .routes{
+        display: none;
+    }
+    .formulario-busqueda{
+        display :none
+    }
+    .toggle{
+        display: block;
+    }
+}
+.Buscador{
+    height: 25px;
+    width: 260px;
+    border-radius: 17px;
+}
+.search-button{
+    position: absolute;
+    right: 10px;
+    background: none;
+    top: 8px;
+    border: none;
+}
