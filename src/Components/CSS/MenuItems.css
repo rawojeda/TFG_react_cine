@@ -10,5 +10,6 @@
     color: #C2C7CB;
     cursor: pointer;
     padding-right: 10px;
+    font-size: 18px;
 }
 .links:hover{mix-blend-mode:color-dodge;}

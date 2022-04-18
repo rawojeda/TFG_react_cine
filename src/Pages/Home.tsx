@@ -2,7 +2,7 @@ import React from "react";
 import "./CSS/Home.css";
 
 interface IHomeProps {
-  collapsed: boolean;
+  color_button: string;
 }
 interface IHomeState {
   change: boolean;

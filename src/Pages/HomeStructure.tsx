@@ -12,7 +12,7 @@ class HomeStructureX extends React.Component<{}, {}> {
         <div className="contenido">
           <Switch>
             <Route exact path="/">
-              <Home collapsed={true} />
+              <Home color_button="red" />
             </Route>
             <Route path="/">404</Route>
           </Switch>
