@@ -6,15 +6,15 @@ class MenuItems extends React.Component<{}, {}> {
   public render() {
     return (
       <div className="routes">
-        <Link className="links" to="/">
+        <Link className="links" to="/Peliculas">
           Peliculas
         </Link>
 
-        <Link className="links" to="/">
+        <Link className="links" to="/Noticias">
           Noticias
         </Link>
 
-        <Link className="links" to="/">
+        <Link className="links" to="/Recomendaciones">
           Recomendaciones
         </Link>
       </div>

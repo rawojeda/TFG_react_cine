@@ -1,19 +1,45 @@
 import "./CSS/HomeStructure.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
 import Home from "./Home";
 import React from "react";
 import Navegador from "../Components/Navegador";
+import Recomendations from "./Recomendations";
 
-class HomeStructureX extends React.Component<{}, {}> {
+interface IHomeStructureState {
+  searchText: string;
+}
+
+class HomeStructure extends React.Component<{}, IHomeStructureState> {
+  
+  constructor(props: {}) {
+    super(props);
+    this.state = { searchText: ""};
+  }
+
+  public onSearchTextChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
+    this.setState({searchText: event.target.value});
+    console.log(this.state.searchText);
+  }
+
   public render() {
     return (
       <Router>
-        <Navegador />
+        <Navegador OnSearchTextChange={this.onSearchTextChange}/>
         <div className="contenido">
           <Switch>
-            <Route exact path="/">
+          <Route exact path="/">
               <Home color_button="red" />
             </Route>
+            <Route exact path="/Peliculas">
+              Peliculas
+            </Route>
+            <Route exact path="/Noticias">
+              Noticias
+            </Route>
+            <Route exact path="/Recomendaciones">
+              <Recomendations/>
+            </Route>
+            
             <Route path="/">404</Route>
           </Switch>
         </div>
@@ -22,4 +48,4 @@ class HomeStructureX extends React.Component<{}, {}> {
     );
   }
 }
-export default HomeStructureX;
+export default HomeStructure;

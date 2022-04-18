@@ -3,13 +3,17 @@ import React from "react";
 import "./CSS/MenuResponsive.css";
 import { FaBars, FaSearch } from "react-icons/fa";
 
-interface IHomeState {
+interface IResponsiveMenuProps{
+  OnSearchTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+interface IResponsiveMenuState {
   toggle_press: boolean;
   searchText: string;
 }
 
-class MenuResponsive extends React.Component<{}, IHomeState> {
-  constructor(props: {}) {
+class MenuResponsive extends React.Component<IResponsiveMenuProps, IResponsiveMenuState> {
+  constructor(props: IResponsiveMenuProps) {
     super(props);
     this.state = { toggle_press: false, searchText: "" };
   }
@@ -18,26 +22,26 @@ class MenuResponsive extends React.Component<{}, IHomeState> {
     this.setState({ toggle_press: !!!this.state.toggle_press });
     console.log(this.state.toggle_press);
   };
-  public onSearchTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ searchText: event.target.value });
-    console.log(this.state.searchText);
-  };
+  public OnSearchTextChangeInternal = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.props.OnSearchTextChange(event);
+    this.setState({searchText: event.target.value});
+  }
   public render() {
     return (
       <ul className="Navegador-Desplegable">
         {/* links */}
         <li className="Navegador-desplegable-item">
-          <Link className="links" to="/">
+          <Link className="links" to="/Peliculas">
             Peliculas
           </Link>
         </li>
         <li className="Navegador-desplegable-item">
-          <Link className="links" to="/">
+          <Link className="links" to="/Noticias">
             Noticias
           </Link>
         </li>
         <li className="Navegador-desplegable-item">
-          <Link className="links" to="/">
+          <Link className="links" to="/Recomendaciones">
             Recomendaciones
           </Link>
         </li>
@@ -50,7 +54,7 @@ class MenuResponsive extends React.Component<{}, IHomeState> {
               className="Buscador"
               placeholder="Seven, Martin Escorsese..."
               value={this.state.searchText}
-              onChange={this.onSearchTextChange}
+              onChange={this.OnSearchTextChangeInternal}
             />
             <button className="search-button" type="submit">
               <FaSearch />

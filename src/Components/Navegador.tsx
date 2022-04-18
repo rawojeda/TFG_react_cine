@@ -7,25 +7,29 @@ import { MdOutlineMovie } from "react-icons/md";
 import { FaBars, FaSearch } from "react-icons/fa";
 import MenuResponsive from "./MenuResponsive";
 
-interface IHomeState {
+interface INavegatorProps{
+  OnSearchTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+interface INavegatorState {
   toggle_press: boolean;
   searchText: string;
 }
 
 
-class Navegador extends React.Component<{}, IHomeState> {
-  constructor(props: {}) {
+class Navegador extends React.Component<INavegatorProps, INavegatorState> {
+  constructor(props: INavegatorProps) {
     super(props);
-    this.state = { toggle_press: false, searchText: ""};
+    this.state = { toggle_press: false, searchText:""};
   }
 
   public showitems = () => {
     this.setState({toggle_press: !!!this.state.toggle_press})
     console.log(this.state.toggle_press);
   };
-  public onSearchTextChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
+  public OnSearchTextChangeInternal = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.props.OnSearchTextChange(event);
     this.setState({searchText: event.target.value});
-    console.log(this.state.searchText);
   }
   public render() {
     return (
@@ -58,7 +62,7 @@ class Navegador extends React.Component<{}, IHomeState> {
                 className="Buscador"
                 placeholder="Seven, Martin Escorsese..."
                 value={this.state.searchText}
-                onChange={this.onSearchTextChange}
+                onChange={this.OnSearchTextChangeInternal}
               />
               <button className="search-button" type="submit">
                 <FaSearch />
@@ -73,7 +77,7 @@ class Navegador extends React.Component<{}, IHomeState> {
             </div>
         </div>
         {/* toggle desplesgable */}
-        {this.state.toggle_press ? <MenuResponsive/> : null}
+        {this.state.toggle_press ? <MenuResponsive OnSearchTextChange={this.props.OnSearchTextChange}/> : null}
         </div>
     );
   }
