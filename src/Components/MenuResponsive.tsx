@@ -31,13 +31,13 @@ class MenuResponsive extends React.Component<IResponsiveMenuProps, IResponsiveMe
       <ul className="Navegador-Desplegable">
         {/* links */}
         <li className="Navegador-desplegable-item">
-          <Link className="links" to="/Peliculas">
-            Peliculas
+          <Link className="links" to="/Estrenos">
+            Estrenos
           </Link>
         </li>
         <li className="Navegador-desplegable-item">
-          <Link className="links" to="/Noticias">
-            Noticias
+          <Link className="links" to="/Reviews">
+            Reviews
           </Link>
         </li>
         <li className="Navegador-desplegable-item">

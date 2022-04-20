@@ -1,0 +1,70 @@
+.Sign-area{
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    width: 850px;
+    background-color: #3e3e40;
+    top: 60px;
+    right: 0px;
+    height: 485px;
+    
+}
+@media screen and (max-width: 887px) {
+    .Sign-area{
+        flex-direction: column;
+        width: fit-content;
+        height: fit-content;
+        border: solid;
+    }
+    .v-line{
+        border-bottom: solid;
+        
+    }
+    .Sign{
+        padding: 0px 50px 0px 50px;
+    }
+}
+.v-line{   
+    border-left: solid;
+    border-color: #C2C7CB;
+}
+.Sign{
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #C2C7CB;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+.div-input{
+    margin-bottom: 10px;
+    border-radius: 3px;
+    height: 35px;
+    width: -webkit-fill-available;
+    border-style: none;
+}
+.div-input:hover{border-style: solid; border-color: #8389d7; }
+.checkbx{
+    margin-right: auto;
+    padding-bottom: 10px;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+.btn-continuar{
+    height: 35px;
+    color: #000000b8;
+    background-color: #8389d7;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor:pointer;
+    width: -webkit-fill-available;
+}
+.btn-continuar:hover{
+    background-color: #5f66c2;
+    border-style: solid;
+    border-color: #232b95;
+}

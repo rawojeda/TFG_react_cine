@@ -14,7 +14,7 @@ class Recomendations extends React.Component<{}, IRecomendationState> {
   public render() {
     return (
       <>
-        <p className="title"> Recomendaciones Por Género</p>
+        <p className="title"> Recomendaciones Por Género: </p>
         <ul className="Sections">
             {this.state.sections.map((section) => (
                 <Section name={section}/>

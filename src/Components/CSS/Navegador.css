@@ -7,6 +7,7 @@
 /* navegador */
 .navegador{
     background-color: #3e3e40;
+    position: relative;
 }
 
 /* logo */
@@ -50,7 +51,7 @@
     height: -webkit-fill-available;
     padding-right: 10px;
 }
-@media screen and (max-width: 669px) {
+@media screen and (max-width: 708px) {
     .profile-div{
         margin-left: auto;
     }

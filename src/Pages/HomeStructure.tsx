@@ -30,11 +30,11 @@ class HomeStructure extends React.Component<{}, IHomeStructureState> {
           <Route exact path="/">
               <Home color_button="red" />
             </Route>
-            <Route exact path="/Peliculas">
-              Peliculas
+            <Route exact path="/Estrenos">
+              Estrenos
             </Route>
-            <Route exact path="/Noticias">
-              Noticias
+            <Route exact path="/Reviews">
+              Reviews
             </Route>
             <Route exact path="/Recomendaciones">
               <Recomendations/>
