@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import "./CSS/MenuResponsive.css";
-import { FaBars, FaSearch } from "react-icons/fa";
+import Search_area from "./Search_area";
 
 interface IResponsiveMenuProps{
   OnSearchTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -9,13 +9,13 @@ interface IResponsiveMenuProps{
 
 interface IResponsiveMenuState {
   toggle_press: boolean;
-  searchText: string;
+
 }
 
 class MenuResponsive extends React.Component<IResponsiveMenuProps, IResponsiveMenuState> {
   constructor(props: IResponsiveMenuProps) {
     super(props);
-    this.state = { toggle_press: false, searchText: "" };
+    this.state = { toggle_press: false};
   }
 
   public showitems = () => {
@@ -24,7 +24,6 @@ class MenuResponsive extends React.Component<IResponsiveMenuProps, IResponsiveMe
   };
   public OnSearchTextChangeInternal = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.props.OnSearchTextChange(event);
-    this.setState({searchText: event.target.value});
   }
   public render() {
     return (
@@ -48,18 +47,7 @@ class MenuResponsive extends React.Component<IResponsiveMenuProps, IResponsiveMe
 
         {/* formulario de busqueda */}
         <li className="Navegador-desplegable-item">
-          <div className="formulario-busqueda-desplegable">
-            <input
-              type="text"
-              className="Buscador"
-              placeholder="Seven, Martin Escorsese..."
-              value={this.state.searchText}
-              onChange={this.OnSearchTextChangeInternal}
-            />
-            <button className="search-button" type="submit">
-              <FaSearch />
-            </button>
-          </div>
+          <Search_area OnSearchTextChange={this.props.OnSearchTextChange} display="-ds-true"/>
         </li>
       </ul>
     );

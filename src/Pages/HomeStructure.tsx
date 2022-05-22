@@ -4,6 +4,7 @@ import Home from "./Home";
 import React from "react";
 import Navegador from "../Components/Navegador";
 import Recomendations from "./Recomendations";
+import New_films from "./New_films";
 
 interface IHomeStructureState {
   searchText: string;
@@ -18,7 +19,6 @@ class HomeStructure extends React.Component<{}, IHomeStructureState> {
 
   public onSearchTextChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
     this.setState({searchText: event.target.value});
-    console.log(this.state.searchText);
   }
 
   public render() {
@@ -31,7 +31,7 @@ class HomeStructure extends React.Component<{}, IHomeStructureState> {
               <Home color_button="red" />
             </Route>
             <Route exact path="/Estrenos">
-              Estrenos
+              <New_films/>
             </Route>
             <Route exact path="/Reviews">
               Reviews

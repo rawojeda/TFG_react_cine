@@ -7,6 +7,7 @@ import { MdOutlineMovie } from "react-icons/md";
 import { FaBars, FaSearch } from "react-icons/fa";
 import MenuResponsive from "./MenuResponsive";
 import Sign from "./Sign";
+import Search_area from "./Search_area";
 
 interface INavegatorProps{
   OnSearchTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -14,7 +15,6 @@ interface INavegatorProps{
 
 interface INavegatorState {
   toggle_press: boolean;
-  searchText: string;
   profile_press: boolean;
 }
 
@@ -22,7 +22,7 @@ interface INavegatorState {
 class Navegador extends React.Component<INavegatorProps, INavegatorState> {
   constructor(props: INavegatorProps) {
     super(props);
-    this.state = { toggle_press: false, searchText:"", profile_press: false};
+    this.state = { toggle_press: false, profile_press: false};
   }
 
   public showitems = () => {
@@ -33,7 +33,6 @@ class Navegador extends React.Component<INavegatorProps, INavegatorState> {
   };
   public OnSearchTextChangeInternal = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.props.OnSearchTextChange(event);
-    this.setState({searchText: event.target.value});
   }
   public showprofile = () => {
     if(!this.state.profile_press && this.state.toggle_press){
@@ -66,18 +65,7 @@ class Navegador extends React.Component<INavegatorProps, INavegatorState> {
 
 
           {/* formulario de busqueda */}
-            <div className="formulario-busqueda">
-              <input
-                type="text"
-                className="Buscador"
-                placeholder="Seven, Martin Escorsese..."
-                value={this.state.searchText}
-                onChange={this.OnSearchTextChangeInternal}
-              />
-              <button className="search-button" type="submit">
-                <FaSearch />
-              </button>
-            </div>
+            <Search_area OnSearchTextChange={this.props.OnSearchTextChange} display=""/>
 
             {/* boton de perfil */}
             <div className="profile-div">
@@ -89,7 +77,7 @@ class Navegador extends React.Component<INavegatorProps, INavegatorState> {
         {/* profile box */}
         {this.state.profile_press ? <Sign/> : null}
         {/* toggle desplesgable */}
-        {this.state.toggle_press ? <MenuResponsive OnSearchTextChange={this.props.OnSearchTextChange}/> : null}
+        {this.state.toggle_press ? <MenuResponsive OnSearchTextChange={this.props.OnSearchTextChange} /> : null}
         </div>
     );
   }

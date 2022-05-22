@@ -44,13 +44,7 @@
 }
 .image-nav:hover{mix-blend-mode: hard-light;}
 
-/* formulario de busqueda */
-.formulario-busqueda{
-    position: relative;
-    margin-left:auto;
-    height: -webkit-fill-available;
-    padding-right: 10px;
-}
+
 @media screen and (max-width: 708px) {
     .profile-div{
         margin-left: auto;
@@ -58,23 +52,7 @@
     .routes{
         display: none;
     }
-    .formulario-busqueda{
-        display :none
-    } 
     .toggle{
         display: block;
     }
-}
-.Buscador{
-    height: 25px;
-    width: 260px;
-    border-radius: 17px;
-}
-.search-button{
-    position: absolute;
-    right: 10px;
-    background: none;
-    top: 8px;
-    border: none;
-    cursor:pointer
 }

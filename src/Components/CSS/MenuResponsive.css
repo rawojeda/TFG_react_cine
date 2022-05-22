@@ -9,14 +9,9 @@
     margin: auto;
     padding-bottom: 10px;
 }
-@media screen and (min-width: 669px) {
+@media screen and (min-width: 708px) {
     .Navegador-Desplegable{
         display:none;
     }
 }
 
-.formulario-busqueda-desplegable{
-    position: relative;
-    margin-left:auto;
-    height: -webkit-fill-available;
-}
