@@ -1,26 +1,23 @@
 import React from "react";
 import MovieCard from "../Components/MovieCard";
 import { get } from "../Utils/Api_get";
+import { FilmDescription, dataType } from "../Utils/interfaces";
 import "./CSS/New_Films.css";
 
-interface INew_filmsState {
-  films: Array<Map<String, any>> ;
+interface INewFilmsState {
+  films: Array<FilmDescription> ;
 }
-class New_films extends React.Component<{}, INew_filmsState> {
+
+class New_films extends React.Component<{}, INewFilmsState> {
   constructor(props: {}) {
     super(props);
+    this.state= {films: []};
+  }
+  public componentDidMount(){
     const searchURL = "https://api.themoviedb.org/3/discover/movie?page=";
-    let mapa: Array<Map<String, any>> = [];
-    get(searchURL).then((data) => {
-      data.results.forEach((element: Map<String, any>) => {
-        mapa.push(element);
-      });
-      // // asi estaria bien
-      // this.state = { films: mapa };
-      // console.log(this.state.films);
+    get(searchURL).then((data: dataType) => {
+      this.setState({films: data.results});
     });
-      this.state = { films: mapa };
-      console.log(this.state.films);
   }
 
   public render() {
@@ -28,9 +25,9 @@ class New_films extends React.Component<{}, INew_filmsState> {
       <>
         <p className="title">Nuevas Películas</p>
         <ul className="moviesgrid">
-            {/* {this.state.films.map((element) => (
-              <li>elemento</li>
-            ))} */}
+          {this.state.films.map((element) => (
+              <MovieCard film={element} key={element.id}/>
+            ))}
         </ul>
       </>
     );

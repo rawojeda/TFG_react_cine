@@ -1,20 +1,22 @@
 import "./CSS/HomeStructure.css";
-import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./Home";
 import React from "react";
 import Navegador from "../Components/Navegador";
 import Recomendations from "./Recomendations";
 import New_films from "./New_films";
+import { FilmData } from "./FilmData";
 
 interface IHomeStructureState {
   searchText: string;
+  filmId: number;
 }
 
 class HomeStructure extends React.Component<{}, IHomeStructureState> {
   
   constructor(props: {}) {
     super(props);
-    this.state = { searchText: ""};
+    this.state = { searchText: "", filmId: 0};
   }
 
   public onSearchTextChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
@@ -38,6 +40,9 @@ class HomeStructure extends React.Component<{}, IHomeStructureState> {
             </Route>
             <Route exact path="/Recomendaciones">
               <Recomendations/>
+            </Route>
+            <Route exact path="/Pelicula/:peliculaId">
+              <FilmData />
             </Route>
             
             <Route path="/">404</Route>

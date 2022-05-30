@@ -1,1 +1,30 @@
-.film{}
+.movieCard{
+    list-style: none;
+    font-size: 1.5rem;
+    text-align-last: center;
+    padding: 6px 0px 2px 0px;
+}
+a{
+    text-decoration: none;
+}
+.movieImage{
+    border-radius: 10px;
+    background-color: azure;
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+}
+.movieImage:hover{
+    opacity: 0.5;
+}
+
+.titles{
+    text-align: center;
+    color: black;
+    font-family: sans-serif;
+    font-weight: 600;
+    margin: 0px 40px 0px 40px;
+}
+.titles:hover{
+    opacity: 0.5;
+}
