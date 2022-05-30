@@ -6,6 +6,7 @@ import Navegador from "../Components/Navegador";
 import Recomendations from "./Recomendations";
 import New_films from "./New_films";
 import { FilmData } from "./FilmData";
+import Footer from "../Components/Footer";
 
 interface IHomeStructureState {
   searchText: string;
@@ -48,7 +49,7 @@ class HomeStructure extends React.Component<{}, IHomeStructureState> {
             <Route path="/">404</Route>
           </Switch>
         </div>
-        <div className="pie_pagina">PIE DE PÁGINA</div>
+        <Footer/>
       </Router>
     );
   }

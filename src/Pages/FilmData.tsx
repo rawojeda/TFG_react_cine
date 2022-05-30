@@ -27,25 +27,32 @@ export function FilmData() {
 
   return (
     <div className="filmdetail_box">
-      <img src={imageUrl} className="filmImage" alt={film ? film.title : "No data"}></img>
+      <img
+        src={imageUrl}
+        className="filmImage"
+        alt={film ? film.title : "No data"}
+      ></img>
       <div className="filmData">
+        <p className="lanzamiento">
+          <strong>Lanzamiento: </strong>{" "}
+          {film ? film.release_date : "sin fecha de lanzamiento"}
+        </p>
         <p>
-          <strong>Titulo: {film ? film.title : "No data"}</strong>
+          <strong>Título: </strong> {film ? film.title : "No data"}
         </p>
 
         {film ? (
           <p>
-            <strong>
-              Genero:
-              {film.genres.map((genre) => genre.name).join(", ")}
-            </strong>
+            <strong>Géneros: </strong>
+            {film.genres.map((genre) => genre.name).join(", ")}
           </p>
         ) : (
           "No data"
         )}
-        <strong>
-          <p>Descripcion: {film ? film.overview : "No Data"}</p>
-        </strong>
+        <p>
+          <strong>Descripción: </strong>
+          {film ? film.overview : "No Data"}
+        </p>
       </div>
     </div>
   );

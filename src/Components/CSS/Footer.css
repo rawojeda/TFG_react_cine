@@ -1,0 +1,13 @@
+.pie_pagina{
+    background-color: #3e3e40;
+    color: #C2C7CB;
+    text-align: center;
+    padding: 5px 20px 5px 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.sp-bt{
+    padding: 0px 10px 0px 10px;
+}

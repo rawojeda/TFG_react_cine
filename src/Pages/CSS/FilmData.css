@@ -6,15 +6,18 @@
     border-width: 7px;
     padding: 20px;
     border-radius: 60px;
-    background-color: #8389d78f;
+    background-color: #8389d76b;
 }
 .filmImage {
   border-radius: 15px;
-  max-width: 400px;
   margin-right: 40px;
+  max-height: 600px;
 }
 .filmData {
   color: black;
   font-size: 1.5rem;
   max-width: 400px;
+}
+.lanzamiento{
+
 }

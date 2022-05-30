@@ -7,9 +7,9 @@
 }
 .links{
     text-decoration: none;
-    color: #C2C7CB;
+    color: #b1b4dd;
     cursor: pointer;
     padding-right: 10px;
     font-size: 18px;
 }
-.links:hover{mix-blend-mode:color-dodge;}
+.links:hover{mix-blend-mode: hard-light;}
