@@ -4,10 +4,12 @@ import { get } from "../Utils/Api_get";
 import "./CSS/FilmData.css";
 import { filmData } from "../Utils/interfaces";
 import images from "../Images/images";
+import { foto_puntaje } from "../Utils/Puntaje";
 
 interface FilmId {
   peliculaId: string;
 }
+
 export function FilmData() {
   const filmId: FilmId = useParams();
   const [film, setFilm] = useState<filmData>();
@@ -24,36 +26,49 @@ export function FilmData() {
       ? "https://image.tmdb.org/t/p/w400" + film.poster_path
       : images.placeholder
     : "";
-
   return (
-    <div className="filmdetail_box">
-      <img
-        src={imageUrl}
-        className="filmImage"
-        alt={film ? film.title : "No data"}
-      ></img>
-      <div className="filmData">
-        <p className="lanzamiento">
-          <strong>Lanzamiento: </strong>{" "}
-          {film ? film.release_date : "sin fecha de lanzamiento"}
-        </p>
-        <p>
-          <strong>Título: </strong> {film ? film.title : "No data"}
-        </p>
-
-        {film ? (
+    <>
+      <p className="title">
+        <strong> {film ? film.title : "No data"}</strong>
+      </p>
+      <div className="filmdetail_box">
+        <img
+          src={imageUrl}
+          className="filmImage"
+          alt={film ? film.title : "Sin foto"}
+        ></img>
+        <div className="filmData">
           <p>
-            <strong>Géneros: </strong>
-            {film.genres.map((genre) => genre.name).join(", ")}
+            <strong>Lanzamiento: </strong>{" "}
+            {film ? film.release_date : "sin fecha de lanzamiento"}
           </p>
-        ) : (
-          "No data"
-        )}
-        <p>
-          <strong>Descripción: </strong>
-          {film ? film.overview : "No Data"}
-        </p>
+
+          {film ? (
+            <p>
+              <strong>Géneros: </strong>
+              {film.genres.map((genre) => genre.name).join(", ")}
+            </p>
+          ) : (
+            "Género/s desconocidos"
+          )}
+          <p>
+            <strong>Descripción: </strong>
+            {film ? film.overview : "No hay descripción."}
+          </p>
+          <div className="puntuacion">
+            <strong>Puntuación en TMDB: {film ? film.vote_average : "Puntuación no disponible"}</strong>
+            {film ? (
+              <img
+                src={foto_puntaje(film.vote_average)}
+                className="image_votes"
+                alt={film.original_title}
+              ></img>
+            ) : (
+              "Puntaje desconocido"
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

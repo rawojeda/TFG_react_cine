@@ -15,10 +15,12 @@
     height: 25px;
     width: 260px;
     border-radius: 17px;
+    padding-left: 10px;
 }
 .search-button{
     position: absolute;
-    right: 10px;
+    right: 18px;
+    color: #1b27c9bd;
     background: none;
     top: 8px;
     border: none;
@@ -30,6 +32,6 @@
         display: none;
     }
     .search-button{
-        right: 2px;
+        right: 8px;
     }
 }

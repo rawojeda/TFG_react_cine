@@ -16,8 +16,14 @@
 .filmData {
   color: black;
   font-size: 1.5rem;
-  max-width: 400px;
+  max-width: 650px;
 }
-.lanzamiento{
-
+.puntuacion{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.image_votes{
+  max-width: 250px;
+  padding-top: 10px;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import "./CSS/Footer.css";
-import { FaTwitterSquare, FaLinkedin, FaFacebookSquare } from "react-icons/fa";
+import { FaTwitter, FaLinkedinIn, FaFacebook } from "react-icons/fa";
 class Footer extends React.Component<{}, {}> {
   public render() {
     return (
@@ -9,9 +9,9 @@ class Footer extends React.Component<{}, {}> {
             Powered by React
         </div>
         <div>
-          <FaTwitterSquare className="image-nav" />
-          <FaLinkedin className="image-nav sp-bt" />
-          <FaFacebookSquare className="image-nav" />
+          <FaTwitter className="image-nav fs" />
+          <FaLinkedinIn className="image-nav sp-bt fs" />
+          <FaFacebook className="image-nav fs"/>
         </div>
       </div>
     );

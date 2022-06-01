@@ -4,10 +4,11 @@ import MenuItems from "./MenuItems";
 import "./CSS/Navegador.css";
 import { GiPlagueDoctorProfile } from "react-icons/gi";
 import { MdOutlineMovie } from "react-icons/md";
-import { FaBars, FaSearch } from "react-icons/fa";
+import { FaBars} from "react-icons/fa";
 import MenuResponsive from "./MenuResponsive";
 import Sign from "./Sign";
-import Search_area from "./Search_area";
+import SearchArea from "./Search_area";
+
 
 interface INavegatorProps{
   OnSearchTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -31,15 +32,14 @@ class Navegador extends React.Component<INavegatorProps, INavegatorState> {
     }
     this.setState({toggle_press: !!!this.state.toggle_press})
   };
-  public OnSearchTextChangeInternal = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.props.OnSearchTextChange(event);
-  }
+
   public showprofile = () => {
     if(!this.state.profile_press && this.state.toggle_press){
       this.setState({toggle_press: !!!this.state.toggle_press})
     }
     this.setState({profile_press: !!!this.state.profile_press})
   };
+
   public render() {
     return (
       <div className="navegador">
@@ -65,7 +65,7 @@ class Navegador extends React.Component<INavegatorProps, INavegatorState> {
 
 
           {/* formulario de busqueda */}
-            <Search_area OnSearchTextChange={this.props.OnSearchTextChange} display=""/>
+            <SearchArea OnSearchTextChange={this.props.OnSearchTextChange} display=""/>
 
             {/* boton de perfil */}
             <div className="profile-div">
@@ -82,4 +82,5 @@ class Navegador extends React.Component<INavegatorProps, INavegatorState> {
     );
   }
 }
+
 export default Navegador;

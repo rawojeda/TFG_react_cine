@@ -1,0 +1,15 @@
+.loading{
+    color: white;
+    display: flex;
+    justify-content: center;
+    /* le pongo el margin porque con el infinite-scroll se ralla */
+    margin: 100px;
+}
+.spinning{
+    animation: giradormaximo 2s linear infinite;
+}
+@keyframes giradormaximo {
+    to{
+        transform: rotate(360deg);
+    }
+}

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import "./CSS/MenuResponsive.css";
-import Search_area from "./Search_area";
+import SearchArea from "./Search_area";
 
 interface IResponsiveMenuProps{
   OnSearchTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -22,16 +22,13 @@ class MenuResponsive extends React.Component<IResponsiveMenuProps, IResponsiveMe
     this.setState({ toggle_press: !!!this.state.toggle_press });
     console.log(this.state.toggle_press);
   };
-  public OnSearchTextChangeInternal = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.props.OnSearchTextChange(event);
-  }
   public render() {
     return (
       <ul className="Navegador-Desplegable">
         {/* links */}
         <li className="Navegador-desplegable-item">
-          <Link className="links" to="/Estrenos">
-            Estrenos
+          <Link className="links" to="/Peliculas">
+            Peliculas
           </Link>
         </li>
         <li className="Navegador-desplegable-item">
@@ -47,9 +44,10 @@ class MenuResponsive extends React.Component<IResponsiveMenuProps, IResponsiveMe
 
         {/* formulario de busqueda */}
         <li className="Navegador-desplegable-item">
-          <Search_area OnSearchTextChange={this.props.OnSearchTextChange} display="-ds-true"/>
+          <SearchArea OnSearchTextChange={this.props.OnSearchTextChange} display="-ds-true" />
         </li>
       </ul>
+      
     );
   }
 }

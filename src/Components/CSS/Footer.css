@@ -1,8 +1,8 @@
 .pie_pagina{
-    background-color: #3e3e40;
-    color: #C2C7CB;
+    background-color: #282829;
+    color: #b1b4dd;
     text-align: center;
-    padding: 5px 20px 5px 20px;
+    padding: 12px ;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -10,4 +10,7 @@
 }
 .sp-bt{
     padding: 0px 10px 0px 10px;
+}
+.fs{
+    font-size: 32px;
 }

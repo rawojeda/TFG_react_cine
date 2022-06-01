@@ -5,10 +5,6 @@ import { GoSignIn} from "react-icons/go";
 
 
 class Sign extends React.Component<{}, {}> {
-  constructor(props: {}) {
-    super(props);
-  }
-
   public render() {
     return (
       <div className="Sign-area">
