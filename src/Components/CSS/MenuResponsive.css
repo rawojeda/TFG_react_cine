@@ -9,7 +9,7 @@
     margin: auto;
     padding-bottom: 10px;
 }
-@media screen and (min-width: 708px) {
+@media screen and (min-width: 748px) {
     .Navegador-Desplegable{
         display:none;
     }

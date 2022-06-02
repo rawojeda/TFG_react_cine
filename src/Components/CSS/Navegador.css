@@ -30,9 +30,6 @@
 }
 .toggle-button:hover{mix-blend-mode: hard-light;}
 /* perfil */
-.profile-div{
-    padding: 5px 0px 0px 0px;
-}
 
 /* perfil y logo */
 .image-nav{
@@ -41,11 +38,12 @@
     border: none;
     cursor: pointer;
     font-size: 42px;
+    padding: 5px 0px 0px 0px;
 }
 .image-nav:hover{mix-blend-mode: hard-light;}
 
 
-@media screen and (max-width: 708px) {
+@media screen and (max-width: 748px) {
     .profile-div{
         margin-left: auto;
     }
@@ -56,3 +54,17 @@
         display: block;
     }
 }
+.profile-button{
+    height: auto;
+    width: auto;
+    background: none;
+    border: none;
+}
+.profile-button-image{
+    height: 36px;
+    width: 36px;
+    border-radius: 30px;
+    border-color: #8389d7;
+    border-style: solid;
+}
+.profile-button-image:hover{opacity: 0.85;}

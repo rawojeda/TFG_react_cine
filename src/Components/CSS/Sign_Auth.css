@@ -1,0 +1,35 @@
+.Sign-area{
+    position: absolute;
+    display: flex;
+    width: auto;
+    background-color: #646d69;
+    top: 67px;
+    right: 0px;
+    height: auto;
+    padding: 5px 30px 5px 30px;
+    flex-direction: column;
+    font-family: sans-serif;
+}
+.Log-in-out{
+    background-color: unset;
+    border: none;
+    cursor: pointer;
+    color: #e0eae5;
+    font-size: 18px;
+}
+.Log-in-out:hover{
+    color: white;
+}
+.pico-bocadillo{
+    position: absolute;
+    top: 47px;
+    right: 16px;
+    width: 0;
+    height: 0;
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid #646d69;
+}
+
+

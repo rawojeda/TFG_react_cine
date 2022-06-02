@@ -6,11 +6,7 @@ interface ISectionProps {
 interface ISectionState {
   
 }
-class Section extends React.Component<ISectionProps, ISectionState> {
-  constructor(props: ISectionProps) {
-    super(props);
-  }
- 
+class Section extends React.Component<ISectionProps, ISectionState> { 
   public render() {
     return (
       <li className="section">

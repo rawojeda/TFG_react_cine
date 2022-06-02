@@ -1,86 +1,75 @@
-import { Link } from "react-router-dom";
-import React from "react";
-import MenuItems from "./MenuItems";
-import "./CSS/Navegador.css";
+import { useState } from "react";
+import { FaBars } from "react-icons/fa";
 import { GiPlagueDoctorProfile } from "react-icons/gi";
 import { MdOutlineMovie } from "react-icons/md";
-import { FaBars} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import MenuItems from "./MenuItems";
 import MenuResponsive from "./MenuResponsive";
-import Sign from "./Sign";
+import "./CSS/Navegador.css";
 import SearchArea from "./Search_area";
+import SignAuth from "./SignAuth";
+import { useAuth0 } from "@auth0/auth0-react";
 
-
-interface INavegatorProps{
-  OnSearchTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-interface INavegatorState {
-  toggle_press: boolean;
-  profile_press: boolean;
-}
-
-
-class Navegador extends React.Component<INavegatorProps, INavegatorState> {
-  constructor(props: INavegatorProps) {
-    super(props);
-    this.state = { toggle_press: false, profile_press: false};
+export function Navegador() {
+  const [toggle_press, settoggle_press] = useState<boolean>(false);
+  const [profile_press, setprofile_press] = useState<boolean>(false);
+  const {user, isAuthenticated} = useAuth0();
+  
+  function showitems(){
+    if (profile_press && !toggle_press) {
+        setprofile_press(!!!profile_press);
+      }
+      settoggle_press(!!!toggle_press );
   }
-
-  public showitems = () => {
-    if(this.state.profile_press && !this.state.toggle_press){
-      this.setState({profile_press: !!!this.state.profile_press})
-    }
-    this.setState({toggle_press: !!!this.state.toggle_press})
-  };
-
-  public showprofile = () => {
-    if(!this.state.profile_press && this.state.toggle_press){
-      this.setState({toggle_press: !!!this.state.toggle_press})
-    }
-    this.setState({profile_press: !!!this.state.profile_press})
-  };
-
-  public render() {
-    return (
-      <div className="navegador">
+  function showprofile(){
+    if (!profile_press && toggle_press) {
+        settoggle_press(!!!toggle_press);
+      }
+      setprofile_press(!!!profile_press);
+  }
+  return (
+    <div className="navegador">
       <div className="cabecera">
-          {/* toggle desplegable */}
-            <div className="toggle ">
-              <button className=" toggle-button" onClick={this.showitems}>
-                <FaBars/>
-              </button>
-            </div>
+        {/* toggle desplegable */}
+        <div className="toggle ">
+          <button className=" toggle-button" onClick={showitems}>
+            <FaBars />
+          </button>
+        </div>
 
+        {/* logo */}
+        <div className="logo">
+          <Link className="image-nav" to="/">
+            <MdOutlineMovie />
+          </Link>
+        </div>
+
+        {/* links */}
+        <MenuItems />
+
+        {/* formulario de busqueda */}
+        <SearchArea display="" />
+
+        {/* boton de perfil */}
+        <div className="profile-div">
+          {isAuthenticated
+            ? <button className="profile-button" onClick={showprofile}>
+              <img className="profile-button-image" src={user?.picture} alt={user?.name}></img>
+            </button>
+            :<button className=" image-nav" type="submit" onClick={showprofile}>
+            <GiPlagueDoctorProfile />
+          </button>
+          }
           
-          {/* logo */}
-            <div className="logo">
-              <Link className="image-nav" to="/">
-                <MdOutlineMovie />
-              </Link>
-            </div>
-
-
-          {/* links */}
-            <MenuItems />
-
-
-          {/* formulario de busqueda */}
-            <SearchArea OnSearchTextChange={this.props.OnSearchTextChange} display=""/>
-
-            {/* boton de perfil */}
-            <div className="profile-div">
-              <button className=" image-nav" type="submit" onClick={this.showprofile}>
-                <GiPlagueDoctorProfile />
-              </button>
-            </div>
         </div>
-        {/* profile box */}
-        {this.state.profile_press ? <Sign/> : null}
-        {/* toggle desplesgable */}
-        {this.state.toggle_press ? <MenuResponsive OnSearchTextChange={this.props.OnSearchTextChange} /> : null}
-        </div>
-    );
-  }
+      </div>
+
+      {/* profile box */}
+      {/* {this.state.profile_press ? <Sign /> : null} */}
+      {profile_press ? <SignAuth /> : null}
+
+      {/* toggle desplesgable */}
+      {toggle_press ? <MenuResponsive /> : null}
+    </div>
+  );
 }
-
-export default Navegador;

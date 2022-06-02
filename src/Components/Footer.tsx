@@ -8,10 +8,10 @@ class Footer extends React.Component<{}, {}> {
         <div >
             Powered by React
         </div>
-        <div>
-          <FaTwitter className="image-nav fs" />
-          <FaLinkedinIn className="image-nav sp-bt fs" />
-          <FaFacebook className="image-nav fs"/>
+        <div className="social-icon">
+          <FaTwitter />
+          <FaLinkedinIn className="sp-bt" />
+          <FaFacebook />
         </div>
       </div>
     );

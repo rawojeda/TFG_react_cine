@@ -3,25 +3,21 @@ import React from "react";
 import "./CSS/MenuResponsive.css";
 import SearchArea from "./Search_area";
 
-interface IResponsiveMenuProps{
-  OnSearchTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
 interface IResponsiveMenuState {
   toggle_press: boolean;
-
 }
 
-class MenuResponsive extends React.Component<IResponsiveMenuProps, IResponsiveMenuState> {
-  constructor(props: IResponsiveMenuProps) {
+class MenuResponsive extends React.Component<{}, IResponsiveMenuState> {
+  constructor(props: {}) {
     super(props);
-    this.state = { toggle_press: false};
+    this.state = { toggle_press: false };
   }
 
   public showitems = () => {
     this.setState({ toggle_press: !!!this.state.toggle_press });
     console.log(this.state.toggle_press);
   };
+
   public render() {
     return (
       <ul className="Navegador-Desplegable">
@@ -44,10 +40,9 @@ class MenuResponsive extends React.Component<IResponsiveMenuProps, IResponsiveMe
 
         {/* formulario de busqueda */}
         <li className="Navegador-desplegable-item">
-          <SearchArea OnSearchTextChange={this.props.OnSearchTextChange} display="-ds-true" />
+          <SearchArea display="-ds-true" />
         </li>
       </ul>
-      
     );
   }
 }

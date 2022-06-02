@@ -8,9 +8,14 @@
     justify-content: space-between;
     align-items: center;
 }
+.social-icon{
+    color: #8389d7;
+    background-color: unset;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
 .sp-bt{
     padding: 0px 10px 0px 10px;
 }
-.fs{
-    font-size: 32px;
-}
+

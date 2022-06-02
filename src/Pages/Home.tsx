@@ -1,29 +1,14 @@
 import React from "react";
 import "./CSS/Home.css";
+import { Profile } from "./Profile";
 
-interface IHomeProps {
-  color_button: string;
-}
-interface IHomeState {
-  change: boolean;
-  color_button: string;
-}
-class Home extends React.Component<IHomeProps, IHomeState> {
-  constructor(props: IHomeProps) {
-    super(props);
-    this.state = { change: false, color_button: "red" };
-  }
-  public changebuttoncolour = () => {
-    this.setState({ change: !!!this.state.change });
-    if (this.state.change)
-     this.setState({ color_button: "red" });
-    else
-     this.setState({ color_button: "green" });
-  };
+
+
+class Home extends React.Component<{}, {}> {
   public render() {
     return (
       <div>
-        <p>
+        {/* <p>
           nuevas PELIS:{" "}
           <button
             onClick={this.changebuttoncolour}
@@ -31,7 +16,8 @@ class Home extends React.Component<IHomeProps, IHomeState> {
           >
             {this.state.color_button}
           </button>
-        </p>
+        </p> */}
+        <Profile></Profile>
       </div>
     );
   }

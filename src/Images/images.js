@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import popcorn from "./popcorn_icon.png";
 import profile from "./profile.png";
 import placeholder from "./placeholder.png";
