@@ -8,6 +8,7 @@
 .navegador{
     background-color: #3e3e40;
     position: relative;
+    font-family: sans-serif;
 }
 
 /* logo */
@@ -26,11 +27,11 @@
     border: none;
     cursor: pointer;
     font-size: 32px;
-    padding-top: 0px;
+    padding-top: 5px;
 }
 .toggle-button:hover{mix-blend-mode: hard-light;}
-/* perfil */
 
+/* perfil */
 /* perfil y logo */
 .image-nav{
     color: #8389d7;
@@ -38,7 +39,6 @@
     border: none;
     cursor: pointer;
     font-size: 42px;
-    padding: 5px 0px 0px 0px;
 }
 .image-nav:hover{mix-blend-mode: hard-light;}
 
@@ -59,6 +59,7 @@
     width: auto;
     background: none;
     border: none;
+    padding-top: 5px;
 }
 .profile-button-image{
     height: 36px;
@@ -66,5 +67,6 @@
     border-radius: 30px;
     border-color: #8389d7;
     border-style: solid;
+    cursor: pointer;
 }
 .profile-button-image:hover{opacity: 0.85;}

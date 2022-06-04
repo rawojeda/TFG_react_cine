@@ -1,18 +1,24 @@
 import "./CSS/HomeStructure.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
-import React from "react";
+import React, { useState } from "react";
 import {Navegador} from "../Components/Navegador";
 import Recomendations from "./Recomendations";
 import { MovieViewer } from "./MovieViewer";
 import { FilmData } from "./FilmData";
 import Footer from "../Components/Footer";
 
-class HomeStructure extends React.Component<{}, {}> {
-  public render() {
+export function HomeStructure() {
+
+  const [conectado, setConectado] = useState(false);
+
+  const acceder = (estado: boolean) => {
+    setConectado(estado);
+  };
+
     return (
       <Router>
-        <Navegador />
+        <Navegador acceder={acceder}/>
         <div className="contenido">
           <Switch>
             <Route exact path="/">
@@ -45,6 +51,5 @@ class HomeStructure extends React.Component<{}, {}> {
         <Footer />
       </Router>
     );
-  }
 }
 export default HomeStructure;

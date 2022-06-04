@@ -33,7 +33,6 @@ class SearchArea extends React.Component<ISearch_areaProps, ISearch_areaState> {
         <Link
           to={"/searcher/" + this.state.searchText}
           className="search-button"
-          type="submit"
         >
           <FaSearch />
         </Link>

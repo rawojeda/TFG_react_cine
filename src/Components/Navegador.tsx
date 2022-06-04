@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
-import { GiPlagueDoctorProfile } from "react-icons/gi";
-import { MdOutlineMovie } from "react-icons/md";
+import { GiPlagueDoctorProfile, GiSparkSpirit } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import MenuItems from "./MenuItems";
 import MenuResponsive from "./MenuResponsive";
 import "./CSS/Navegador.css";
 import SearchArea from "./Search_area";
-import SignAuth from "./SignAuth";
-import { useAuth0 } from "@auth0/auth0-react";
+import { Sign } from "./Sign";
 
-export function Navegador() {
+export function Navegador(props: {
+  acceder: Function;
+}) {
   const [toggle_press, settoggle_press] = useState<boolean>(false);
   const [profile_press, setprofile_press] = useState<boolean>(false);
-  const {user, isAuthenticated} = useAuth0();
   
   function showitems(){
     if (profile_press && !toggle_press) {
@@ -40,7 +39,7 @@ export function Navegador() {
         {/* logo */}
         <div className="logo">
           <Link className="image-nav" to="/">
-            <MdOutlineMovie />
+            <GiSparkSpirit />
           </Link>
         </div>
 
@@ -52,21 +51,21 @@ export function Navegador() {
 
         {/* boton de perfil */}
         <div className="profile-div">
-          {isAuthenticated
+          {/* {isAuthenticated
             ? <button className="profile-button" onClick={showprofile}>
               <img className="profile-button-image" src={user?.picture} alt={user?.name}></img>
-            </button>
-            :<button className=" image-nav" type="submit" onClick={showprofile}>
+            </button>: */}
+            <button className=" image-nav" type="submit" onClick={showprofile}>
             <GiPlagueDoctorProfile />
           </button>
-          }
+          {/* } */}
           
         </div>
       </div>
 
       {/* profile box */}
-      {/* {this.state.profile_press ? <Sign /> : null} */}
-      {profile_press ? <SignAuth /> : null}
+      {profile_press ? <Sign acceder ={props.acceder}/> : null}
+      {/* {profile_press ? <SignAuth /> : null} */}
 
       {/* toggle desplesgable */}
       {toggle_press ? <MenuResponsive /> : null}

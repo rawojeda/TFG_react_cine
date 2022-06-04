@@ -1,14 +1,5 @@
-.routes{
-    list-style: none;
-    display: flex;
-    float: left;
-    height: -webkit-fill-available;
-    place-items: center;
-}
 .links{
-    text-decoration: none;
     color: #b1b4dd;
-    cursor: pointer;
     padding-right: 10px;
     font-size: 20px;
 }

@@ -1,12 +1,13 @@
 .pie_pagina{
-    background-color: #282829;
+    background-color: #3e3e40;
     color: #b1b4dd;
     text-align: center;
-    padding: 12px ;
+    padding: 8px 9px 4px 17px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
+    font-family: sans-serif;
 }
 .social-icon{
     color: #8389d7;

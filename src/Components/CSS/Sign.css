@@ -1,70 +1,123 @@
-.Sign-area{
-    position: absolute;
-    display: flex;
-    justify-content: space-around;
-    width: 850px;
-    background-color: #3e3e40;
-    top: 60px;
-    right: 0px;
-    height: 485px;
-    
+.Sign-area {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  width: 850px;
+  background-color: #3e3e40;
+  top: 64px;
+  right: 0px;
+  height: 500px;
+  align-items: flex-start;
 }
 @media screen and (max-width: 887px) {
-    .Sign-area{
-        flex-direction: column;
-        width: fit-content;
-        height: fit-content;
-        border: solid;
-    }
-    .v-line{
-        border-bottom: solid;
-        
-    }
-    .Sign{
-        padding: 0px 50px 0px 50px;
-    }
-}
-.v-line{   
-    border-left: solid;
-    border-color: #C2C7CB;
-}
-.Sign{
-    font-size: 15px;
-    font-family: sans-serif;
-    font-weight: 700;
-    display: flex;
+  .Sign-area {
     flex-direction: column;
+    width: fit-content;
+    height: fit-content;
     align-items: center;
-    color: #C2C7CB;
-    padding-top: 13px;
-    padding-bottom: 13px;
+  }
+  .v-line {
+    border-bottom: solid;
+    height: 0px !important;
+    width: 100%;
+  }
+  .Sign {
+    padding: 0px 50px 0px 50px;
+  }
 }
-.div-input{
-    margin-bottom: 10px;
-    border-radius: 3px;
-    height: 35px;
-    width: -webkit-fill-available;
-    border-style: none;
+.image-nav-sign {
+  color: #8389d7;
+  background-color: unset;
+  border: none;
+  font-size: 42px;
 }
-.div-input:hover{border-style: solid; border-color: #8389d7; }
-.checkbx{
-    margin-right: auto;
-    padding-bottom: 10px;
-    font-size: 15px;
-    font-family: sans-serif;
+.v-line {
+  border-left: solid;
+  border-color: #c2c7cb;
+  height: 500px;
 }
-.btn-continuar{
-    height: 35px;
-    color: #000000b8;
-    background-color: #8389d7;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 4px;
-    cursor:pointer;
-    width: -webkit-fill-available;
+.Sign {
+  font-family: sans-serif;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #c2c7cb;
+  margin:50px;
 }
-.btn-continuar:hover{
-    background-color: #5f66c2;
-    border-style: solid;
-    border-color: #232b95;
+.div-input {
+  margin-bottom: 10px;
+  border-radius: 3px;
+  height: 35px;
+  width: -webkit-fill-available;
+  border-style: solid;
+  background-color: #b4bdfe1a;
+  border-color: #8389d7;
+  font-size: 16px;
+  color: #c2c7cb;
+  font-weight: 700;
+} 
+.valid{
+  background-color: green;
+}
+.not-valid{
+  background-color: red;
+}
+.btn-continuar {
+  height: 35px;
+  color: #000000b8;
+  background-color: #8389d7;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  width: -webkit-fill-available;
+  margin-bottom:10px;
+}
+.btn-continuar:hover {
+  background-color: #5f66c2;
+  border-style: solid;
+  border-color: #232b95;
+}
+.button-canceled {
+  cursor: not-allowed;
+}
+.pico-bocadillo {
+  position: absolute;
+  top: 44px;
+  right: 26px;
+  width: 0;
+  height: 0;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid #3e3e40;
+}
+/* bootstrap imported */
+.alert {
+  --bs-alert-bg: transparent;
+  --bs-alert-padding-x: 1rem;
+  --bs-alert-padding-y: 1rem;
+  --bs-alert-margin-bottom: 1rem;
+  --bs-alert-color: inherit;
+  --bs-alert-border-color: transparent;
+  --bs-alert-border: 1px solid var(--bs-alert-border-color);
+  --bs-alert-border-radius: 0.375rem;
+  position: relative;
+  padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
+  margin-bottom: var(--bs-alert-margin-bottom);
+  color: var(--bs-alert-color);
+  background-color: var(--bs-alert-bg);
+  border: var(--bs-alert-border);
+  border-radius: var(--bs-alert-border-radius, 0);
+}
+.alert-danger {
+  --bs-alert-color: #842029;
+  --bs-alert-bg: #f8d7da;
+  --bs-alert-border-color: #f5c2c7;
+  /* añadido: */
+  margin-top: 30px;
+}
+.alert-danger .alert-link {
+  color: #6a1a21;
 }

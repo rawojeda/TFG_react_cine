@@ -2,7 +2,6 @@
 .formulario-busqueda{
     position: relative;
     margin-left:auto;
-    height: -webkit-fill-available;
     padding-right: 10px;
 }
 .formulario-busqueda-ds-true{
@@ -24,7 +23,6 @@
     background: none;
     top: 8px;
     border: none;
-    cursor:pointer
 }
 
 @media screen and (max-width: 748px) {
