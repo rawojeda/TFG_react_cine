@@ -1,0 +1,30 @@
+.Options-area {
+  position: absolute;
+  display: flex;
+  width: auto;
+  background-color: #3e3e40;
+  top: 64px;
+  right: 0px;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+}
+.Option {
+  color: #c2c7cb;
+  font-size: 19px;
+  font-weight: 600;
+  margin: 10px 90px 10px 90px;
+}
+.Option:hover{
+  color:white;
+}
+.btn-logout{
+  background: none;
+  cursor: pointer;
+  width: auto;
+  border: none;
+}
+.barra{
+  width: 100%;
+  margin:0;
+}

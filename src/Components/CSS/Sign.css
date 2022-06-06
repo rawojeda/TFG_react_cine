@@ -6,7 +6,7 @@
   background-color: #3e3e40;
   top: 64px;
   right: 0px;
-  height: 500px;
+  height: auto;
   align-items: flex-start;
 }
 @media screen and (max-width: 887px) {
@@ -16,10 +16,10 @@
     height: fit-content;
     align-items: center;
   }
-  .v-line {
-    border-bottom: solid;
-    height: 0px !important;
-    width: 100%;
+  .brd-lft{
+    border-left-style: none !important;
+    border-top-style:solid;
+    border-color: #c2c7cb;
   }
   .Sign {
     padding: 0px 50px 0px 50px;
@@ -31,11 +31,7 @@
   border: none;
   font-size: 42px;
 }
-.v-line {
-  border-left: solid;
-  border-color: #c2c7cb;
-  height: 500px;
-}
+
 .Sign {
   font-family: sans-serif;
   font-weight: 700;
@@ -43,7 +39,15 @@
   flex-direction: column;
   align-items: center;
   color: #c2c7cb;
-  margin:50px;
+  padding:50px;
+}
+.brd-lft{
+  border-left-style:solid;
+  border-color: #c2c7cb;
+}
+.div-div-input {
+  width: -webkit-fill-available;
+  position: relative;
 }
 .div-input {
   margin-bottom: 10px;
@@ -58,10 +62,12 @@
   font-weight: 700;
 } 
 .valid{
-  background-color: green;
+  background-color: #76d87852;
+  border-color: green;
 }
 .not-valid{
-  background-color: red;
+  background-color: #c93d3d57;
+  border-color: red;
 }
 .btn-continuar {
   height: 35px;
@@ -85,7 +91,7 @@
 .pico-bocadillo {
   position: absolute;
   top: 44px;
-  right: 26px;
+  right: 16px;
   width: 0;
   height: 0;
   border-right: 10px solid transparent;

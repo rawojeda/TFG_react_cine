@@ -73,15 +73,11 @@ export interface dataType {
     vote_count: number;
   }
   
-  export interface user{
-      given_name: string;
-      family_name: string;
-      nickname: string;
-      name: string;
-      picture: string;
-      locale: string;
-      updated_at: string;
-      email:string;
-      email_verified:boolean;
-      sub: string;
+  export interface User{
+      Admin: number;
+      Email: string;
+      Password: string;
+      UserName: string;
+      conectado: boolean;
+      UserId: number;
   }

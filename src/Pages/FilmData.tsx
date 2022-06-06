@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { get } from "../Utils/Api_get";
 import "./CSS/FilmData.css";
-import { filmData } from "../Utils/interfaces";
+import { filmData, User } from "../Utils/interfaces";
 import images from "../Images/images";
 import { foto_puntaje } from "../Utils/Puntaje";
 
@@ -10,7 +10,7 @@ interface FilmId {
   peliculaId: string;
 }
 
-export function FilmData() {
+export function FilmData(props:{user: User}) {
   const filmId: FilmId = useParams();
   const [film, setFilm] = useState<filmData>();
   useEffect(() => {

@@ -6,7 +6,6 @@ export const Login_bd = async (url: string, data: { username: string; pass: stri
         "Content-Type": "application/json",
       },
     }).then((result) => result.json());
-    console.log(resp);
     return resp;
   };
   
