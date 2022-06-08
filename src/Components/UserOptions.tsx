@@ -27,11 +27,11 @@ export function UserOptions(props: { userData:Function; user: User; close_profil
         {props.user.Admin === 1 ? (
           <>
             <hr className="barra" />
-            <p className="Option">Mis recomendaciones</p>
+            <Link to={"/RecomendacionesAdmin/"} className="Option">Mis recomendaciones</Link>
           </>
         ) : null}
         <hr className="barra" />
-        <button className="btn-logout Option" onClick={handleLogout}>Cerrar Sesión</button>
+        <button type="submit" className="btn-logout Option" onClick={handleLogout}>Cerrar Sesión</button>
       </div>
       <div className="pico-bocadillo"></div>
     </>

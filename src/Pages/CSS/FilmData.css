@@ -5,13 +5,17 @@
     border-style: solid;
     border-width: 7px;
     padding: 20px;
-    border-radius: 60px;
+    border-radius: 30px;
     background-color: #8389d76b;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 105px;
 }
+
 .filmImage {
   border-radius: 15px;
-  margin-right: 40px;
   max-height: 600px;
+  border-style: solid;
 }
 .filmData {
   color: black;
@@ -26,4 +30,90 @@
 .image_votes{
   max-width: 250px;
   padding-top: 10px;
+}
+.newComment-form{
+  display: flex;
+  width: 100%;
+  background-color: #b2b6b95c;
+  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  border-style: double;
+  
+}
+.contact-form-average{
+  height: 27px;
+  margin-top: 20px;
+  width: 42px;
+  margin-left: 11px;
+}
+.contact-form-email-message{
+  height: 100px;
+  width: 67%;
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: monospace;
+}
+.NewComment{
+  height: 35px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: darkgray;
+  font-size: 18px;
+  margin: 10px;
+}
+.NewComment:hover{
+  background-color: gray;
+  cursor: pointer;
+}
+.close-error{
+  margin-left: 65px;
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: #842029;
+  cursor: pointer;
+}
+.count{
+  width: auto;
+  border-style: solid;
+  border-radius: 10px;
+  text-align:center;
+  margin-bottom: 150px;
+  margin-top: 50px;
+}
+.stats{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.rectangle{
+  width: 500px;
+  height: 10px;
+  position: relative;
+  background-color: black;
+  margin-right: 10px;
+}
+@media screen and (max-width: 750px) {
+  .rectangle{
+    width: 250px;
+  }
+}
+.relative-rectangle{
+  height: 100%;
+  position: absolute;
+  background: #fafa87;
+}
+.emote-visible{
+  font-size: 51px;
+  color: #3e3e40;
+}
+.cl-yllw{
+  color: #fafa87;
+  padding-inline: 2px;
+}
+.comments{
+  flex-direction: column;
 }

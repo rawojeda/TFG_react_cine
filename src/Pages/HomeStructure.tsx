@@ -1,5 +1,5 @@
 import "./CSS/HomeStructure.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import React, { useEffect, useState } from "react";
 import {Navegador} from "../Components/Navegador";
@@ -8,8 +8,9 @@ import { MovieViewer } from "./MovieViewer";
 import { FilmData } from "./FilmData";
 import Footer from "../Components/Footer";
 import { User } from "../Utils/interfaces";
-import { Comments } from "./Comments";
 import { Lists } from "./Lists";
+import { RecomendationActions } from "./RecomendationActions";
+import { Reviewss } from "./Reviews";
 
 export function HomeStructure() {
   const [user, setUser] = useState<User>({conectado:false, UserName:"", Password:"", Email: "", Admin: 0, UserId:0});
@@ -46,7 +47,7 @@ export function HomeStructure() {
               />
             </Route>
             <Route exact path="/Reviews">
-              Reviews
+              <Reviewss/>
             </Route>
             <Route exact path="/Recomendaciones">
               <Recomendations />
@@ -55,10 +56,10 @@ export function HomeStructure() {
               <FilmData user={user}/>
             </Route>
             <Route exact path="/Listas/:userId">
-              <Comments />
+              {user.conectado ? <Lists/>: <Redirect to={"/"}/>}
             </Route>
-            <Route exact path="/Comentarios/:userId">
-              <Lists/>
+            <Route exact path="/RecomendacionesAdmin">
+              {user.conectado&&(user.Admin===1) ? <RecomendationActions/>: <Redirect to={"/"} />}
             </Route>
             <Route path="/">404</Route>
           </Switch>

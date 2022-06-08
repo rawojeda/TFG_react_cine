@@ -74,10 +74,37 @@ export interface dataType {
   }
   
   export interface User{
-      Admin: number;
-      Email: string;
-      Password: string;
-      UserName: string;
-      conectado: boolean;
-      UserId: number;
+    Admin: number;
+    Email: string;
+    Password: string;
+    UserName: string;
+    conectado: boolean;
+    UserId: number;
+  }
+
+  export interface Comment{
+    UserId: number;
+    Comment: string;
+    Vote: number;
+    Date: string;
+    Username: string;
+    Admin: number;
+  }
+  export interface Comments{
+    NumComments: number;
+    Comments: Array<Comment>;
+    VotesSummary: number;
+    Votes: number[];
+  }
+
+  export interface Review{
+    Title: string;
+    Resumen: string;
+    Review: string;
+    Date: string;
+    FilmId: number;
+  }
+  export interface Reviews{
+    NumReviews: number;
+    Reviews: Array<Review>;
   }

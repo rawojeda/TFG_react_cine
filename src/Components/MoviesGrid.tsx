@@ -1,6 +1,6 @@
 import React from "react";
 import "./CSS/MoviesGrid.css";
-import MovieCard from "./MovieCard";
+import {MovieCard} from "./MovieCard";
 import { FilmDescription } from "../Utils/interfaces";
 
 interface IFilmsProps {

@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import "./CSS/Sign.css";
 import { FaUserCheck, FaUserEdit } from "react-icons/fa";
 import { emailValidation, equal, erroresSigninCliente, passValidation, repeatedpassValidation } from "../Utils/ErrorHanding";
-import { Login_bd, Signin_bd } from "../Utils/Sign";
+import { Login_bd, Signin_bd } from "../Utils/BD_request";
 import { User } from "../Utils/interfaces";
 // import jwt  from "jsonwebtoken";
 
@@ -36,8 +36,7 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
   const [erroresCliente,setErroresCliente] = useState<string[]>([]);
 
   // Inicio de sesion de usuario, peticion a la base de datos.
-  const handleLogin = async (e:any) => {
-    e.preventDefault();
+  const handleLogin = async () => {
     setEsperaLogin(true);
     const data = {
       //si el usuario o la contraseña esta vacio, que devuelva "", tambien se podría poner User_login: string|undefined.
@@ -68,8 +67,7 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
 
 
   // registro de usuario, peticion a la base de datos.
-  const handleSignin = async (e:any) => {
-    e.preventDefault();
+  const handleSignin = async () => {
     setErrorSignin(null);
     setErroresCliente([]);
     const data = {

@@ -33,7 +33,7 @@ export function MovieViewer(props: {
       //caso avengers, avengers_page_2, titanic 
       setPage(1); 
   }, [location]);
-
+  
   useEffect(() => {
     const searchURL = props.searchURL.includes("query") 
       ? props.searchURL + location.replace("/searcher/","") +"&page=" + page

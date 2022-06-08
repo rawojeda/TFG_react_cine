@@ -1,0 +1,25 @@
+.CommentaryCard{
+    width: 100%;
+    border-style: double;
+    margin-bottom: 60px;
+}
+.CommentUserData{
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+    margin: 20px 35px 20px 35px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.Userdata{
+    font-size: 30px;
+    font-weight: 800;
+}
+.CommentText{
+    max-width: 96%;
+    margin-inline: 4%;
+    font-size: 1.5rem;
+    line-height: 41px;
+    word-spacing: 5px;
+    text-indent: 40px;
+}

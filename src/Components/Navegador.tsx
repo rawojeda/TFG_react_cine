@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { GiPlagueDoctorProfile, GiSparkSpirit,GiBatMask } from "react-icons/gi";
 import {FaUsers } from "react-icons/fa";
@@ -31,6 +31,8 @@ export function Navegador(props: {
       }
       setprofile_press(!!!profile_press);
   }
+
+  
   return (
     <div className="navegador">
       <div className="cabecera">
@@ -65,7 +67,7 @@ export function Navegador(props: {
       {/* profile box */}
       {profile_press ? 
         props.user.conectado
-          ? <UserOptions userData ={props.userData} user={props.user} close_profile={showprofile}/>
+          ? <UserOptions userData ={props.userData}user={props.user} close_profile={showprofile}/>
           : <Sign userData ={props.userData} tokenData={props.tokenData} close_profile={showprofile}/>
         : null}
 

@@ -1,0 +1,9 @@
+.reviews-box{
+    display: flex;
+    margin: 19px;
+    border-style: solid;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #8389d76b;
+    flex-direction: column;
+}
