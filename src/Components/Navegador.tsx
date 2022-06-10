@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaBars } from "react-icons/fa";
-import { GiPlagueDoctorProfile, GiSparkSpirit,GiBatMask } from "react-icons/gi";
+import { GiPlagueDoctorProfile} from "react-icons/gi";
 import {FaUsers } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import MenuItems from "./MenuItems";
@@ -10,6 +10,7 @@ import SearchArea from "./Search_area";
 import { Sign } from "./Sign";
 import { User } from "../Utils/interfaces";
 import { UserOptions } from "./UserOptions";
+import images from "../Images/images";
 
 export function Navegador(props: {
   userData: Function;
@@ -45,8 +46,8 @@ export function Navegador(props: {
 
         {/* logo */}
         <div className="logo">
-          <Link className="image-nav" to="/">
-            <GiSparkSpirit />
+          <Link to="/">
+            <img className="image-logo" src={images.logo} alt="logo"/>
           </Link>
         </div>
 
@@ -59,7 +60,7 @@ export function Navegador(props: {
         {/* boton de perfil */}
         <div className="profile-div">
             <button className=" image-nav" type="submit" onClick={showprofile}>
-            {props.user.conectado? <GiBatMask />:<FaUsers />}
+            {props.user.conectado? <GiPlagueDoctorProfile />:<FaUsers />}
           </button>
         </div>
       </div>

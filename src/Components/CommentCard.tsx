@@ -1,8 +1,9 @@
-import { AiFillStar } from "react-icons/ai";
+import { AiFillDelete, AiFillStar } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
-import { Comment } from "../Utils/interfaces";
+import { Comment, User } from "../Utils/interfaces";
 import './CSS/CommentCard.css';
-export function CommentCard(props: { comment: Comment ;}) {
+export function CommentCard(props: { allowDelete:boolean;comment: Comment ; user: User; DeleteForSure: Function;UpdateForSure: Function;}) {
+
     return (
         <div className="CommentaryCard">
             <div className="CommentUserData">
@@ -11,6 +12,7 @@ export function CommentCard(props: { comment: Comment ;}) {
                 <div className="Userdata">{props.comment.Date.substring(0,10)}</div>
             </div>
             <p className="CommentText">{props.comment.Comment}</p>
+            {props.allowDelete? <button className="delete-button" onClick={()=>props.DeleteForSure()}> <AiFillDelete/> </button> : null}
         </div>
     );
 }

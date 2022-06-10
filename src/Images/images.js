@@ -1,6 +1,4 @@
 /* eslint-disable import/no-anonymous-default-export */
-import popcorn from "./popcorn_icon.png";
-import profile from "./profile.png";
 import placeholder from "./placeholder.png";
 import five_stars from "./5_stars.png";
 import four_half_stars from "./5_4_stars.png";
@@ -13,10 +11,10 @@ import one_half_stars from "./2_1_stars.png";
 import one_stars from "./1_stars.png";
 import zero_half_stars from "./1_0_stars.png";
 import zero_stars from "./0_stars.png";
+// import logo_image from "./RWILDER.png";
+import logo_image from "./logo.png";
 
 export default {
-    "popcorn": popcorn,
-    "profile": profile,
     "placeholder": placeholder,
     "five_stars": five_stars,
     "four_half": four_half_stars,
@@ -28,5 +26,6 @@ export default {
     "one_half": one_half_stars,
     "one_stars": one_stars,
     "zero_half_stars": zero_half_stars,
-    "zero_stars": zero_stars
+    "zero_stars": zero_stars,
+    "logo": logo_image
 };

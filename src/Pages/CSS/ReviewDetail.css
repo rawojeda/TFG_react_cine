@@ -1,0 +1,26 @@
+.Presentation-text-title-concrete{
+    font-size: 3.1rem;
+    max-width: 300px;
+    display: flex;
+    margin-bottom: 2px;
+}
+.Presentation-text-title-concrete::before{
+    content: '';
+    background-color: #21244bab;
+    display: block;
+    width: 23px;
+    margin-right: 12px;
+}
+.Review-content{
+    display: flex;
+    margin: 1% 3% 1% 5%;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+}
+.Text-content{
+    max-width: 750px;
+    font-size: 22px;
+    line-height: 31px;
+    margin-right: 20px;
+}

@@ -1,3 +1,4 @@
+// PELICULAS
 export interface dataType {
     page: number;
     results: Array<FilmDescription>;
@@ -20,6 +21,11 @@ export interface dataType {
     vote_average: number;
     vote_count: number;
   }
+
+
+
+
+  // DETALLES DE UNA PELÍCULA EN CONCRETO
   export interface belongs_to{
     backdrop_path: string
     id: number
@@ -73,6 +79,8 @@ export interface dataType {
     vote_count: number;
   }
   
+
+  // USUARIOS
   export interface User{
     Admin: number;
     Email: string;
@@ -82,6 +90,9 @@ export interface dataType {
     UserId: number;
   }
 
+
+
+  // COMENTARIOS
   export interface Comment{
     UserId: number;
     Comment: string;
@@ -97,6 +108,8 @@ export interface dataType {
     Votes: number[];
   }
 
+
+  // REVIEWS
   export interface Review{
     Title: string;
     Resumen: string;
@@ -107,4 +120,21 @@ export interface dataType {
   export interface Reviews{
     NumReviews: number;
     Reviews: Array<Review>;
+  }
+
+  // RECOMENDACIONES
+  export interface Collection{
+    CollectionId: number;
+    CollectionName: string;
+  }
+  export interface Recomendation{
+    Collection: string; 
+    RecomendationId:number;
+    Title: string;
+    FilmsId: string;
+    CollectionId: number;
+  }
+  export interface Recomendations{
+    CollectionData: Collection;
+    Recomendations: Recomendation[]; 
   }

@@ -2,6 +2,7 @@
     width: 100%;
     border-style: double;
     margin-bottom: 60px;
+    position: relative;
 }
 .CommentUserData{
     display: flex;
@@ -22,4 +23,17 @@
     line-height: 41px;
     word-spacing: 5px;
     text-indent: 40px;
+}
+.delete-button{
+    background: none;
+    border: none;
+    top: 0px;
+    position: absolute;
+    right: 0;
+    font-size: 24px;
+    color: #ff000082;
+    cursor:pointer;
+}
+.delete-button:hover{
+    color:red;
 }

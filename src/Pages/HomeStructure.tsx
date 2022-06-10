@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-d
 import Home from "./Home";
 import React, { useEffect, useState } from "react";
 import {Navegador} from "../Components/Navegador";
-import Recomendations from "./Recomendations";
+import { Recomendation } from "./Recomendations";
 import { MovieViewer } from "./MovieViewer";
 import { FilmData } from "./FilmData";
 import Footer from "../Components/Footer";
@@ -11,6 +11,7 @@ import { User } from "../Utils/interfaces";
 import { Lists } from "./Lists";
 import { RecomendationActions } from "./RecomendationActions";
 import { Reviewss } from "./Reviews";
+import { ReviewDetail } from "./ReviewDetail";
 
 export function HomeStructure() {
   const [user, setUser] = useState<User>({conectado:false, UserName:"", Password:"", Email: "", Admin: 0, UserId:0});
@@ -50,7 +51,10 @@ export function HomeStructure() {
               <Reviewss/>
             </Route>
             <Route exact path="/Recomendaciones">
-              <Recomendations />
+              <Recomendation />
+            </Route>
+            <Route exact path="/Review/:filmId">
+              <ReviewDetail/>
             </Route>
             <Route exact path="/Pelicula/:peliculaId">
               <FilmData user={user}/>

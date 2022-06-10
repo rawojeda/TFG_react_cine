@@ -127,3 +127,25 @@
 .alert-danger .alert-link {
   color: #6a1a21;
 }
+.close-error{
+  /* añadido */
+  margin-left: 29px;
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: #842029;
+  cursor: pointer;
+}
+.ds-err-flex{
+  /* añadido */
+  display: flex;
+}
+.close-errors-signin{
+  /* añadido */
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: #842029;
+  cursor: pointer;
+  height: 24px;
+}

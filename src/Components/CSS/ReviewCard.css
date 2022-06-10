@@ -1,3 +1,60 @@
 .Review{
-    
+    margin: 2%;
+    border-style: double;    
+}
+.Review-Presentation{
+    display: flex;
+    margin: 1%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.Presentation-text-title{
+    font-size: 3.1rem;
+    max-width: 300px;
+    display: flex;
+    color: black;
+    margin-bottom: 2px;
+    font-weight: 600; 
+}
+.Presentation-text-title::before{
+    content: '';
+    background-color: #21244bab;
+    display: block;
+    width: 23px;
+    margin-right: 12px;
+}
+.Presentation-text-title:hover{
+    text-decoration-line: underline;
+}
+.Presentation-text-Date{
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.Presentation-text-Date::after{
+    content: 'Realizada por Raúl Ojeda Robles';
+    font-size: 14px;
+    background-color: #f731311f;
+    align-self: end;
+    display: block;
+    height: 21px;
+    margin-left: 5px;
+}
+.Presentation-text-Resumen{
+    max-width: 750px;
+    font-size: 22px;
+    line-height: 31px;
+}
+.Presentation-image{
+    display: inline-block;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 50%;
+    border-style: solid;
+    border-color:black;
+}
+.Presentation-image:hover{
+    opacity: 0.8;
 }

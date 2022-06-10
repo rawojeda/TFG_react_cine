@@ -11,7 +11,6 @@ export function Reviewss() {
     const getreviews = async () => {
         const resp: Reviews= await Reviewsget(URL_GETREVIEWS);
         setReviews(resp.Reviews);
-      
     }
     useEffect(() => {
         getreviews();

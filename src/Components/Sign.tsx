@@ -4,6 +4,8 @@ import { FaUserCheck, FaUserEdit } from "react-icons/fa";
 import { emailValidation, equal, erroresSigninCliente, passValidation, repeatedpassValidation } from "../Utils/ErrorHanding";
 import { Login_bd, Signin_bd } from "../Utils/BD_request";
 import { User } from "../Utils/interfaces";
+import { ImCross } from "react-icons/im";
+import Swal from "sweetalert2";
 // import jwt  from "jsonwebtoken";
 
 
@@ -20,8 +22,8 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
   const Pass_signin = useRef<HTMLInputElement>(null);
   const Repeatedpass_signin = useRef<HTMLInputElement>(null);
   const Email_signin = useRef<HTMLInputElement>(null);
-  const [errorSignin, setErrorSignin] = useState(null);
-  const [errorLogin, setErrorLogin] = useState(null);
+  const [errorSignin, setErrorSignin] = useState("");
+  const [errorLogin, setErrorLogin] = useState("");
 
   const [esperaLogin, setEsperaLogin] = useState(false);
   const [esperaSignin, setEsperaSignin] = useState(false);
@@ -33,7 +35,7 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
   const [errorinputrepeatedpass, seterrorinputrepeatedpass] = useState("");
 
   //errores cliente
-  const [erroresCliente,setErroresCliente] = useState<string[]>([]);
+  const [erroresCliente,setErroresCliente] = useState<string>("");
 
   // Inicio de sesion de usuario, peticion a la base de datos.
   const handleLogin = async () => {
@@ -57,6 +59,7 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
       //le damos un token 
       // const token = jwt.sign(resp, 'secretpass', {expiresIn:"3m"});
 
+      successAction("Conectado correctamente");
       //cerramos el div de profile
       props.close_profile();
     }    
@@ -64,20 +67,28 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
 
 
 
-
+  const successAction = (title: string)=>{
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: title,
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
 
   // registro de usuario, peticion a la base de datos.
-  const handleSignin = async () => {
-    setErrorSignin(null);
-    setErroresCliente([]);
+  const handleSignin = async (e:any) => {
+    e.preventDefault();
+    setErrorSignin("");
+    setErroresCliente("");
     const data = {
       //si el usuario o la contraseña esta vacio, que devuelva "".
       username: User_signin? User_signin.current? User_signin.current.value? User_signin.current.value: "": "": "",
       pass: Pass_signin? Pass_signin.current? Pass_signin.current.value? Pass_signin.current.value: "": "": "",
       email: Email_signin? Email_signin.current? Email_signin.current.value? Email_signin.current.value: "": "": ""
     };
-
-    if(!(erroresSigninCliente(data.username, errorinputemail,errorinputpass,errorinputrepeatedpass).length>0)){
+    if(erroresSigninCliente(data.username, errorinputemail,errorinputpass,errorinputrepeatedpass)==""){
       setEsperaSignin(true);
       const resp = await Signin_bd(URL_SIGNIN, data);
 
@@ -89,8 +100,12 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
       setErrorSignin(resp.error);
       setEsperaSignin(false); 
 
-      //cerramos el div de profile
-      props.close_profile();
+      if(resp.conectado){
+        successAction("Usuario creado, conectado correctamente");
+        //cerramos el div de profile
+        props.close_profile();
+      }
+
     }else{
       //recogemos los errores del signin
       setErroresCliente(erroresSigninCliente(data.username, errorinputemail,errorinputpass,errorinputrepeatedpass));
@@ -131,9 +146,10 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
                 Iniciar Sesión
               </button>
           
-              {errorLogin && 
+              {errorLogin!=="" && 
               <div className="alert alert-danger">
                 {errorLogin}
+                <button className="close-error" onClick={()=>setErrorLogin("")}><ImCross/></button>
               </div>
               }
         </form>       
@@ -199,16 +215,18 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
             }>
             Crear Cuenta
           </button>
-          {erroresCliente.map((element)=>(
-            <div className="alert alert-danger" key={element.length}>
-              {element}
-          </div>
-          ))}
-          {errorSignin && 
-            <div className="alert alert-danger ">
-              {errorSignin}
-            </div>
-          }
+          {erroresCliente!=="" && 
+              <div className="alert alert-danger ds-err-flex">
+                <p>{erroresCliente}</p>
+                <button className="close-errors-signin" onClick={()=>setErroresCliente("")}><ImCross/></button>
+              </div>
+              }
+          {errorSignin!=="" && 
+              <div className="alert alert-danger">
+                {errorSignin}
+                <button className="close-error" onClick={()=>setErrorSignin("")}><ImCross/></button>
+              </div>
+              }
         </form>
       </div>
       <div className="pico-bocadillo"></div>

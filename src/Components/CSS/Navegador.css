@@ -11,6 +11,13 @@
     font-family: sans-serif;
 }
 
+.image-logo{
+    width: 60px;
+    opacity: 0.8; 
+}
+.image-logo:hover{
+    opacity: 1; 
+}
 /* logo */
 .logo{
     padding: 3px 15px 0px 5px;

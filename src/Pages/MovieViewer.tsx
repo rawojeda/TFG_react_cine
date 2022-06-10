@@ -23,8 +23,8 @@ export function MovieViewer(props: {
     if(!primeraVez && page===1 ){
       // caso busqueda avengers, titanic(ya que al no funcionar setpage no iría a useefect page)
       const searchURL = props.searchURL.includes("query") 
-      ? props.searchURL + location.replace("/searcher/","") +"&page=" + page
-      : props.searchURL + page;
+      ? props.searchURL + location.replace("/searcher/","") +"&page=" + page + +"&language=es-ES"
+      : props.searchURL + page +"&language=es-ES";
       get(searchURL).then((data: dataType) => {
         setfilms(data.results);
         setHasMore(data.page < data.total_pages);
@@ -36,8 +36,8 @@ export function MovieViewer(props: {
   
   useEffect(() => {
     const searchURL = props.searchURL.includes("query") 
-      ? props.searchURL + location.replace("/searcher/","") +"&page=" + page
-      : props.searchURL + page;
+      ? props.searchURL + location.replace("/searcher/","") +"&page=" + page +"&language=es-ES"
+      : props.searchURL + page +"&language=es-ES";
       
     get(searchURL).then((data: dataType) => {
         if(page===1 ){

@@ -1,16 +1,19 @@
+/* eslint-disable array-callback-return */
 import { useParams } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
 import { get } from "../Utils/Api_get";
 import "./CSS/FilmData.css";
-import { Comment, Comments, filmData, User } from "../Utils/interfaces";
+import { Comment, Comments, filmData, Review, User } from "../Utils/interfaces";
 import images from "../Images/images";
 import { foto_puntaje } from "../Utils/Puntaje";
 import { AiFillStar } from "react-icons/ai";
-import { Comments_bd, newComments_bd } from "../Utils/BD_request";
-import { FaSadCry, FaSadTear } from "react-icons/fa";
+import { Comments_bd, deleteComment_bd, getReview, newComments_bd, updateComment_bd } from "../Utils/BD_request";
+import { FaPencilAlt, FaSadCry, FaSadTear } from "react-icons/fa";
 import { IoMdAddCircle} from "react-icons/io";
 import { ImCross} from "react-icons/im";
 import { CommentCard } from "../Components/CommentCard";
+import { ReviewCard } from "../Components/ReviewCard";
+import Swal from "sweetalert2";
 
 interface FilmId {
   peliculaId: string;
@@ -20,6 +23,9 @@ export function FilmData(props: { user: User }) {
   const filmId: FilmId = useParams();
   const [film, setFilm] = useState<filmData>();
   const [comments, setComments] = useState<Comment[]>([]);
+  const [review, setReview] = useState<Review>();
+
+  // datos importantes para comentario
   const [rangeVotes, setRangeVotes] = useState<number[]>([]);
   const [totalVotes, setTotalVotes] = useState<number>();
   const [UserVote, setUserVote] = useState<string>(); 
@@ -29,12 +35,19 @@ export function FilmData(props: { user: User }) {
   const UserAverage = useRef<HTMLInputElement>(null);  
   const newUserCOmment = useRef<HTMLTextAreaElement>(null);  
   const [newCommentFail, setNewCommentFail] = useState<string>("");
-  const [newComment, setNewComment] = useState(false);
   const [userCommentExists,setUserCommentExists] = useState(false);
 
-  const URL_GETCOMMMENTS = "http://localhost/bd-back/getComments.php";
-  const URL_NEWCOMMMENTS = "http://localhost/bd-back/newComment.php";
 
+  // urls de backend
+  const URL_GETREVIEW = "http://localhost/bd-back/getReview.php";
+  const URL_GETCOMMMENTS = "http://localhost/bd-back/getComments.php";
+  const URL_UPDATECOMMMENT = "http://localhost/bd-back/updateComment.php";
+  const URL_DELETECOMMMENT = "http://localhost/bd-back/deleteComment.php";
+  const URL_NEWCOMMMENT = "http://localhost/bd-back/newComment.php";
+
+
+  
+  // funcion para rellenar las stats de usuario
   function gettingStats(RangeVotes:Array<number>, NumComm:number ,VotesSum:number){
     const bestScore = NumComm * 5;
     const Score = (VotesSum*5)/bestScore;
@@ -43,8 +56,60 @@ export function FilmData(props: { user: User }) {
       const style: object = {width: ((RangeVote/NumComm)*100)+'%'};
       setStatRectangleWidth((prevStat)=>(prevStat.concat(style)));
     });
-    
   }
+
+  const DeleteForSure = ()=>{
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Una vez aceptado, no hay marcha atrás",
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, borrar!'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const data= {userId: props.user.UserId}
+        const resp = await deleteComment_bd(URL_DELETECOMMMENT, data);
+        Swal.fire(
+          resp.mensaje
+        )
+        setCommentUpdate(!!!commentUpdate);
+      }
+    })
+  }
+  const UpdateForSure = (comment: string, vote: number)=>{
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Una vez aceptado, se modificará tu comentario",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, modificar!'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const data= {userId: props.user.UserId,comment:comment, vote: vote }
+        const resp = await updateComment_bd(URL_UPDATECOMMMENT, data);
+        console.log(resp);
+        Swal.fire(
+          resp.mensaje
+        )
+        setCommentUpdate(!!!commentUpdate);
+      }
+    })
+  }
+  const Success = ()=>{
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Comentario creado exitosamente.',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
+  // recopilador de comentarios
   const Commentsget =  () =>{
     setUserCommentExists(false);
     var movieId: number = +filmId.peliculaId;
@@ -57,7 +122,6 @@ export function FilmData(props: { user: User }) {
           }
         });
       }
-      
       setComments(commentss.Comments);
       setTotalVotes(commentss.NumComments);
       gettingStats(commentss.Votes,commentss.NumComments, commentss.VotesSummary);
@@ -65,15 +129,31 @@ export function FilmData(props: { user: User }) {
     })
   }
 
+  //recopilador de review
+  const getreview = async () => {
+    const data = { filmId: +filmId.peliculaId };
+    const resp = await getReview(URL_GETREVIEW, data);
+    setReview(resp.Review);
+  };
+
+  // actualizador de comentarios
+  const [commentUpdate, setCommentUpdate] = useState(false);
+
+  
   useEffect(() => {
-    get("https://api.themoviedb.org/3/movie/" + filmId.peliculaId).then(
+    get("https://api.themoviedb.org/3/movie/" + filmId.peliculaId+"?language=es-ES").then(
       (data) => {
         setFilm(data);
       }
     );
     Commentsget();
-  }, [filmId,newComment, props.user]);
+    getreview();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filmId,commentUpdate, props.user]);
 
+
+
+  //nuevo comentario o actualización del mismo
   const newCommentOfUser =async (e:any) => {
     e.preventDefault();
     const averageUser: null|number = UserAverage? UserAverage.current? UserAverage.current.value? +UserAverage.current.value: null: null: null;
@@ -84,9 +164,14 @@ export function FilmData(props: { user: User }) {
       }else if(averageUser<0 || averageUser>5){
         setNewCommentFail("La nota debe ser entre 0 y 5");
       }else{
-        const data = {userId: props.user.UserId,comment: UserCOmmentnew, filmId: +filmId.peliculaId, vote: averageUser, username: props.user.UserName, admin: props.user.Admin};
-        const resp= await newComments_bd(URL_NEWCOMMMENTS, data);
-        setNewComment(!!!newComment);
+        if(userCommentExists){
+          UpdateForSure(UserCOmmentnew, averageUser);
+        }else{
+          const data = {userId: props.user.UserId,comment: UserCOmmentnew, filmId: +filmId.peliculaId, vote: averageUser, username: props.user.UserName, admin: props.user.Admin};
+          await newComments_bd(URL_NEWCOMMMENT, data);
+          Success();
+          setCommentUpdate(!!!commentUpdate);
+        } 
       }
     }else{
       setNewCommentFail("Para comentar hay que estar registrado");
@@ -147,19 +232,42 @@ export function FilmData(props: { user: User }) {
                 <button className="close-error" onClick={()=>setNewCommentFail("")}><ImCross/></button>
               </div>
             }
-            { userCommentExists? null :
+            
               <form className='newComment-form'>
                 <label ><strong>Tu puntuación: </strong>
                   <input type="number" ref={UserAverage} className="contact-form-average"/>
                 </label>
                 <textarea ref={newUserCOmment} className='contact-form-item contact-form-email-message'>
                 </textarea>
-                <button type="submit" onClick={newCommentOfUser} className="contact-form-item NewComment">Añadir comentario <IoMdAddCircle/></button>
+                <button type="submit" onClick={newCommentOfUser} className="contact-form-item NewComment"> Añadir comentario {userCommentExists? <FaPencilAlt/> :<IoMdAddCircle/>} </button>
               </form>
-            }
+
           </div>
         </div>
       </div>
+
+
+
+
+
+      {/* parte reseña del administrador */}
+      <p className="title">Reseña del administrador: </p>
+      {review !==undefined ? <>
+        <div className="filmdetail_box-review">
+          <ReviewCard review={review}/>
+        </div>
+      </> 
+      : <>
+          <div className="filmdetail_box">
+            <FaSadTear className="emote-visible"/><h3> Todavía no se ha hecho reseña de esta película</h3> <FaSadCry className="emote-visible"/>
+          </div>
+        </>}
+
+
+
+
+
+      {/* parte de los comentarios */}
       <p className="title">Comentarios: </p>
       {comments.length>0 ? <>
       <div className="filmdetail_box comments">
@@ -174,7 +282,10 @@ export function FilmData(props: { user: User }) {
           <div className="stats"> 0<AiFillStar className="cl-yllw"/> <div className="rectangle"> <div className="relative-rectangle" style={statRectangleWidth[0]}></div></div>{rangeVotes[0]} votos</div>
         </div>
         {comments.map((Comentary)=>(
-         <CommentCard key={Comentary.UserId} comment={Comentary}/>
+
+         <CommentCard key={Comentary.UserId} comment={Comentary} user={props.user}  DeleteForSure={DeleteForSure}  UpdateForSure={UpdateForSure}
+         allowDelete={props.user.Admin===1 ?true:props.user.UserId===Comentary.UserId ?true:false} 
+          />
         ))} 
       </div>
       </>

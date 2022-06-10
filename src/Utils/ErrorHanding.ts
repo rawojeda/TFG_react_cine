@@ -45,18 +45,15 @@ export function equal(string1: string, string2:string){
   }
 };
 export function erroresSigninCliente(username:string, email_e:string,pass_e:string,repeatedpass_e:string){
-  var errores:string[] = [];
+  var error:string = "";
   if(email_e==""|| pass_e==""|| repeatedpass_e=="" || username==""){
-    errores.push("hay datos sin rellenar");
+    error ="hay datos sin rellenar";
+  }else if(email_e.includes("not-valid")){
+    error ="el email no esta escrito correctamente: x@x.x";
+  }else if(pass_e.includes("not-valid")){
+    error ="La contraseña debe estar entre 8 y 16 y contener al menos una letra mayúscula, una letra minúscula y un número";
+  }else if(repeatedpass_e.includes("not-valid")){
+    error ="Las contraseñas no coinciden";
   }
-  if(email_e.includes("not-valid")){
-    errores.push("el email no esta escrito correctamente: x@x.x");
-  }
-  if(pass_e.includes("not-valid")){
-    errores.push("La contraseña debe estar entre 8 y 16 y contener al menos una letra mayúscula, una letra minúscula y un número");
-  }
-  if(repeatedpass_e.includes("not-valid")){
-    errores.push("Las contraseñas no coinciden");
-  }
-  return errores;
+  return error;
 }
