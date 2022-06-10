@@ -58,7 +58,7 @@ export function FilmData(props: { user: User }) {
     });
   }
 
-  const DeleteForSure = ()=>{
+  const DeleteForSure = (userId:string)=>{
     Swal.fire({
       title: 'Estas seguro?',
       text: "Una vez aceptado, no hay marcha atrás",
@@ -69,7 +69,8 @@ export function FilmData(props: { user: User }) {
       confirmButtonText: 'Sí, borrar!'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const data= {userId: props.user.UserId}
+        
+        const data= {userId: +userId}
         const resp = await deleteComment_bd(URL_DELETECOMMMENT, data);
         Swal.fire(
           resp.mensaje

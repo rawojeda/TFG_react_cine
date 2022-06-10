@@ -12,6 +12,7 @@ import { Lists } from "./Lists";
 import { RecomendationActions } from "./RecomendationActions";
 import { Reviewss } from "./Reviews";
 import { ReviewDetail } from "./ReviewDetail";
+import { RecomendationPage } from "../Components/RecomendationPage";
 
 export function HomeStructure() {
   const [user, setUser] = useState<User>({conectado:false, UserName:"", Password:"", Email: "", Admin: 0, UserId:0});
@@ -55,6 +56,9 @@ export function HomeStructure() {
             </Route>
             <Route exact path="/Review/:filmId">
               <ReviewDetail/>
+            </Route>
+            <Route exact path="/Recomend/:RecomendId">
+              <RecomendationPage/>
             </Route>
             <Route exact path="/Pelicula/:peliculaId">
               <FilmData user={user}/>

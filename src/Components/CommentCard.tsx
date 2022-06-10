@@ -12,7 +12,7 @@ export function CommentCard(props: { allowDelete:boolean;comment: Comment ; user
                 <div className="Userdata">{props.comment.Date.substring(0,10)}</div>
             </div>
             <p className="CommentText">{props.comment.Comment}</p>
-            {props.allowDelete? <button className="delete-button" onClick={()=>props.DeleteForSure()}> <AiFillDelete/> </button> : null}
+            {props.allowDelete? <button className="delete-button" onClick={()=>props.DeleteForSure(props.comment.UserId)}> <AiFillDelete/> </button> : null}
         </div>
     );
 }

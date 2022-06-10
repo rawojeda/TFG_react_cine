@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Collectionsget, Recommendsget } from "../Utils/BD_request";
 import { Collection, Recomendations } from "../Utils/interfaces";
 import "./CSS/Recomendations.css";
@@ -28,7 +29,7 @@ import "./CSS/Recomendations.css";
           <p className="title" > Recomendaciones por {recommend.CollectionData.CollectionName}: </p>
           <ul className="Sections" >
               {recommend.Recomendations.map((recomentation)=>(
-                <li key={recomentation.RecomendationId} className="section">{recomentation.Title}</li>
+                <Link key={recomentation.RecomendationId} className="section" to={"/Recomend/"+recomentation.RecomendationId}>{recomentation.Title}</Link>
               ))}
           </ul>
         </div>

@@ -105,3 +105,12 @@ export const Login_bd = async (url: string, data: { username: string; pass: stri
       },
     }).then((result) => result.json());
   }
+  export const Recommendget = async (url:RequestInfo, data: {recomendationId:number}) =>{
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data), 
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((result) => result.json());
+  }
