@@ -5,12 +5,13 @@ import { get } from "../Utils/Api_get";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Spinner } from "../Components/Spinner";
 import "./CSS/MovieViewer.css";
-import { dataType, FilmDescription } from "../Utils/interfaces";
+import { dataType, FilmDescription, User } from "../Utils/interfaces";
 import {useLocation } from "react-router-dom";
 
 export function MovieViewer(props: {
   searchURL: string;
   titulo: string;
+  user: User;
 }) {
   const [films, setfilms] = useState<FilmDescription[]>([]);
   const [page, setPage] = useState(1);
@@ -66,7 +67,7 @@ export function MovieViewer(props: {
           }}
           loader={<Spinner />}
         >
-          <MoviesGrid films={films} />
+          <MoviesGrid films={films} user={props.user} page="moviesgrid"/>
         </InfiniteScroll>
       </div>
     </>

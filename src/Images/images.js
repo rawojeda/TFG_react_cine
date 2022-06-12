@@ -13,6 +13,7 @@ import zero_half_stars from "./1_0_stars.png";
 import zero_stars from "./0_stars.png";
 // import logo_image from "./RWILDER.png";
 import logo_image from "./logo.png";
+// import logo_image from "./logoRwild.png";
 
 export default {
     "placeholder": placeholder,

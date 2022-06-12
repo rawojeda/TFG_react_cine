@@ -3,6 +3,7 @@
     font-size: 1.5rem;
     text-align-last: center;
     padding: 6px 0px 2px 0px;
+    position: relative;
 }
 a{
     text-decoration: none;
@@ -28,3 +29,59 @@ a{
 .titles:hover{
     opacity: 0.5;
 }
+.filmOptions{
+    position: absolute;
+    top: 327px;
+    right: 46px;
+    color: white;
+    border: none;
+    font-size: 24px;
+    background: none;
+    border-radius: 13px;
+    cursor: pointer;
+}
+.filmOptions:hover{
+    background-color: black;
+}
+.optionsView{
+    position: absolute;
+    width: 240px;
+    transition: all 0.5s ease ;
+    background-color: #000000c7;
+    right: 45px;
+    top: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.more-height{
+    height: 355px;
+}
+.no-display{
+    height: 0px;
+}
+.OptionView{
+    color: white;
+    background: none;
+    font-size: inherit;
+    margin: 10px;
+    cursor: pointer;
+    opacity: 0.8;
+    border: none;
+}
+.OptionView:hover{
+    opacity:1;
+}
+.DeleteFilmListButton{
+    background: none;
+    border: none;
+    top: 2px;
+    position: absolute;
+    right: 44px;
+    padding-top: 9px;
+    font-size: 29px;
+    color: #ff0000c2;
+    cursor: pointer;
+  }
+  .DeleteFilmListButton:hover{
+    color:red;
+  }

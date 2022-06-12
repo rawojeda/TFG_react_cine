@@ -92,7 +92,6 @@ export function FilmData(props: { user: User }) {
       if (result.isConfirmed) {
         const data= {userId: props.user.UserId,comment:comment, vote: vote }
         const resp = await updateComment_bd(URL_UPDATECOMMMENT, data);
-        console.log(resp);
         Swal.fire(
           resp.mensaje
         )

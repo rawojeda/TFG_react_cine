@@ -4,10 +4,11 @@
   justify-content: space-around;
   width: 850px;
   background-color: #3e3e40;
-  top: 64px;
+  top: 70px;
   right: 0px;
   height: auto;
   align-items: flex-start;
+  z-index: 100;
 }
 @media screen and (max-width: 887px) {
   .Sign-area {
@@ -90,7 +91,7 @@
 }
 .pico-bocadillo {
   position: absolute;
-  top: 44px;
+  top: 50px;
   right: 16px;
   width: 0;
   height: 0;

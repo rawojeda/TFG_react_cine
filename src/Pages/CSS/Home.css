@@ -1,0 +1,196 @@
+.Home{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.Notices-Carrousel{
+    margin: 1%;
+    border-style: solid;
+    width: fit-content;
+    padding: 1%;
+    border-radius: 2%;
+    text-align: center;
+    background-color: #8389d726;
+}
+@media screen and (max-width: 896px) {
+   .Notices-Carrousel{
+        margin: 0;
+        width: -webkit-fill-available;
+        text-align: -webkit-center;
+   }
+    .Principal-img{
+        width: 441px !important;   
+    }
+    .container-S-images{
+        grid-template-columns: repeat(2, 219px) !important;
+        gap: 2px !important;
+    }
+    .MoveButton-Left{
+        height: 253px !important;
+    }
+    .MoveButton-Right{
+        height: 253px !important;
+    }
+    .Secondary-img{
+        margin-left: -37%;
+    }
+    .Carrousel-Filmname{
+        display: none;
+    }
+    .Recomendations{
+        width: -webkit-fill-available;
+    }
+    .buttons-AfterBeforeOptions{
+        margin-inline: 1% !important;
+    }
+  }
+  @media screen and (max-width: 534px) {
+    .buttons-AfterBeforeOptions {
+        flex-wrap: wrap;
+        justify-content: center!important;
+    }
+  }
+  .title-carrousel{
+    font-size: 22px;
+    font-weight: 900;
+    margin-top: 0;
+}
+.container-PP-image{
+    position: relative;
+    width: fit-content;
+}
+.Principal-img{
+    width: 804px;
+    opacity: 0.5;
+}
+.Carrousel-Filmname{
+    position: absolute;
+    top: 45%;
+    font-size: 35px;
+    font-weight: 900;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    max-width: 83%;
+    color: black;
+}
+.Carrousel-Filmname:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.Carrousel-Notice-Title{
+    position: absolute;
+    bottom: 20%;
+    font-size: 27px;
+    font-weight: 800;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    max-width: 80%;
+    color: black;
+}
+.Carrousel-Notice-Title:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+.MoveButton-Left{
+    position: absolute;
+    height: 454px;
+    width: 80px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    font-size: 48px;
+    border: none;
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+}
+.MoveButton-Right{
+    position: absolute;
+    height: 454px;
+    width: 80px;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: white;
+    font-size: 48px;
+    border: none;
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+}
+.MoveButton-Left:hover{
+    opacity:1 ;
+    cursor: pointer;
+}
+.MoveButton-Right:hover{
+    opacity:1 ;
+    cursor: pointer;
+}
+
+.container-S-images{
+    display: grid;
+    grid-template-columns: repeat(2, 400px);
+    gap: 5px;
+    justify-content: center;
+    
+}
+.container-S-image{
+    overflow:hidden;
+}
+.Secondary-img{
+    opacity: 0.75;
+}
+
+
+
+
+
+
+.Recomendations{
+    background-color: #8389d726;
+    text-align: center;
+    margin: 1%;
+    border-style: solid;
+    padding: 1%;
+    border-radius: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+.buttons-AfterBeforeOptions{
+    display: flex;
+    margin-inline: 8%;
+    margin-top: 10%;
+    justify-content: space-between;
+}
+.SeeMore-Recomendations{
+    background-color: #a983d7;
+    border-radius: 30px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 22px;
+    font-family: fantasy;
+    border-color: black;
+    border-style: solid;
+    color: black;
+    border-width: 4px;
+    padding: 25px 66px 25px 66px;
+    margin-bottom: 10px;
+}
+.SeeMore-Recomendations:hover{
+    mix-blend-mode: hard-light;
+}
+.flex-nd{
+    align-self: flex-end;
+}
+.flex-str{
+    align-self: flex-start;
+}

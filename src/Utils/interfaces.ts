@@ -138,3 +138,12 @@ export interface dataType {
     CollectionData: Collection;
     Recomendations: Recomendation[]; 
   }
+
+
+   // RECOMENDACIONES
+   export interface FilmLists{
+    ListId: number;
+    ListName: string;
+    FilmsId: string;
+    UserId: number;
+  }

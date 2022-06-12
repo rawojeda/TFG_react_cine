@@ -24,7 +24,7 @@ import "./CSS/Recomendations.css";
     
     return (
       <>
-      {recommends.map((recommend)=>(
+      {recommends.sort(recommend=>recommend.CollectionData.CollectionId).map((recommend)=>(
         <div key={recommend.CollectionData.CollectionId}>
           <p className="title" > Recomendaciones por {recommend.CollectionData.CollectionName}: </p>
           <ul className="Sections" >

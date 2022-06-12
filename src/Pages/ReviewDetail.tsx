@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { get } from "../Utils/Api_get";
 import { filmData, Review } from "../Utils/interfaces";
@@ -45,10 +45,11 @@ export function ReviewDetail() {
           <h3 className="Text-content" >{review.Review}</h3>
         </div>
         <div className="Presentation-image">
-          <img
+          <Link to={"/Pelicula/"+ review.FilmId}><img
             src={"https://image.tmdb.org/t/p/w400" + film?.poster_path}
             alt={film?.original_title}
-          ></img>
+          ></img></Link>
+          
         </div>
       </div>
       

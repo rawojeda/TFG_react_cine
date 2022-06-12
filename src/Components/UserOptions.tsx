@@ -13,23 +13,9 @@ export function UserOptions(props: { userData:Function; user: User; close_profil
   return (
     <>
       <div className="Options-area">
-        <>
-          <Link to={"/Comentarios/" + props.user.UserId} className="Option">
-            Mis opiniones
-          </Link>
-          <hr className="barra" />
-        </>
-
         <Link to={"/Listas/" + props.user.UserId} className="Option">
           Mis listas
         </Link>
-
-        {props.user.Admin === 1 ? (
-          <>
-            <hr className="barra" />
-            <Link to={"/RecomendacionesAdmin/"} className="Option">Mis recomendaciones</Link>
-          </>
-        ) : null}
         <hr className="barra" />
         <button type="submit" className="btn-logout Option" onClick={handleLogout}>Cerrar Sesión</button>
       </div>

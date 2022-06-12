@@ -1,10 +1,12 @@
 import React from "react";
 import "./CSS/MoviesGrid.css";
 import {MovieCard} from "./MovieCard";
-import { FilmDescription } from "../Utils/interfaces";
+import { FilmDescription, User } from "../Utils/interfaces";
 
 interface IFilmsProps {
   films: Array<FilmDescription>;
+  user: User;
+  page: string;
 }
 
 class MoviesGrid extends React.Component<IFilmsProps, {}> {
@@ -12,7 +14,7 @@ class MoviesGrid extends React.Component<IFilmsProps, {}> {
     return (
       <ul className="moviesgrid">
         {this.props.films.map((element) => (
-          <MovieCard film={element} key={element.id} />
+          <MovieCard film={element} key={element.id} user={this.props.user} page={this.props.page} />
         ))}
       </ul>
     );

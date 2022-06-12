@@ -1,6 +1,6 @@
 import "./CSS/HomeStructure.css";
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
-import Home from "./Home";
+import {Home} from "./Home";
 import React, { useEffect, useState } from "react";
 import {Navegador} from "../Components/Navegador";
 import { Recomendation } from "./Recomendations";
@@ -9,10 +9,10 @@ import { FilmData } from "./FilmData";
 import Footer from "../Components/Footer";
 import { User } from "../Utils/interfaces";
 import { Lists } from "./Lists";
-import { RecomendationActions } from "./RecomendationActions";
 import { Reviewss } from "./Reviews";
 import { ReviewDetail } from "./ReviewDetail";
 import { RecomendationPage } from "../Components/RecomendationPage";
+import { ListPage } from "./ListPage";
 
 export function HomeStructure() {
   const [user, setUser] = useState<User>({conectado:false, UserName:"", Password:"", Email: "", Admin: 0, UserId:0});
@@ -39,14 +39,12 @@ export function HomeStructure() {
             <Route exact path="/Peliculas">
               <MovieViewer
                 searchURL="https://api.themoviedb.org/3/discover/movie?page="
-                titulo="Listado de películas:"
-              />
+                titulo="Listado de películas:" user={user}              />
             </Route>
             <Route exact path={"/searcher/:searchName"}>
               <MovieViewer
                 searchURL="https://api.themoviedb.org/3/search/movie?query="
-                titulo="Resultados de la búsqueda:"
-              />
+                titulo="Resultados de la búsqueda:" user={user}              />
             </Route>
             <Route exact path="/Reviews">
               <Reviewss/>
@@ -58,7 +56,10 @@ export function HomeStructure() {
               <ReviewDetail/>
             </Route>
             <Route exact path="/Recomend/:RecomendId">
-              <RecomendationPage/>
+              <RecomendationPage user={user}/>
+            </Route>
+            <Route exact path="/Lists/:userId/:listName">
+              {user.conectado ? <ListPage user={user}/>: <Redirect to={"/"}/>}
             </Route>
             <Route exact path="/Pelicula/:peliculaId">
               <FilmData user={user}/>
@@ -66,8 +67,8 @@ export function HomeStructure() {
             <Route exact path="/Listas/:userId">
               {user.conectado ? <Lists/>: <Redirect to={"/"}/>}
             </Route>
-            <Route exact path="/RecomendacionesAdmin">
-              {user.conectado&&(user.Admin===1) ? <RecomendationActions/>: <Redirect to={"/"} />}
+             <Route exact path="/searcher/">
+              no hay busquedas con eso
             </Route>
             <Route path="/">404</Route>
           </Switch>

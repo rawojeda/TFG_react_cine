@@ -114,3 +114,62 @@ export const Login_bd = async (url: string, data: { username: string; pass: stri
       },
     }).then((result) => result.json());
   }
+
+
+
+
+  // LISTAS
+  export const Listsget = async (url:RequestInfo, data: {userId:number}) =>{
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data), 
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((result) => result.json());
+  }
+  export const Listget = async (url:RequestInfo, data: {listName:string, userId: string}) =>{
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data), 
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((result) => result.json());
+  }
+  export const Listadd = async (url:RequestInfo, data: {userId:number, listName: string}) =>{
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data), 
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((result) => result.json());
+  }
+  export const deleteList =  async (url:RequestInfo, data: {userId:number, listName: string}) =>{
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data), 
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((result) => result.json());
+  }
+  export const ListaddToList =  async (url:RequestInfo, data: {userId:number, listName: string, filmId: number}) =>{
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data), 
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((result) => result.json());
+  }
+  export const deleteFilmofList =  async (url:RequestInfo, data: {userId:number, listName: string, filmId: number}) =>{
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data), 
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((result) => result.json());
+  }

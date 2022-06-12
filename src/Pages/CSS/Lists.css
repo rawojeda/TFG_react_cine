@@ -1,8 +1,81 @@
-.ListsList{
-    padding: 40px 15px 40px 15px;
-    margin: 0px 30px 50px 30px;
-    border-style: solid; 
-    border-radius: 60px;
-    border-width: 7px;
-    background-color: #8389d78f;
-  }
+.Listtitle{
+  text-align: center;
+  color: black;
+  font-size: 38px;
+  font-family: sans-serif;
+  font-weight: 700;
+  margin: 18px 0px 0px 0px;
+}
+
+.Lists{
+  display: grid;
+    grid-template-columns: repeat(auto-fill, 295px);
+    grid-gap: 30px;
+    padding: 40px 0px 40px 0px;
+    justify-content: center;
+    border-style: solid;
+    margin-inline: 5%;
+    border-radius: 20px;
+    border-width: 4px;
+    background-color: #8389d7;
+    position: relative;
+}
+.AddListButton{
+  position: absolute;
+  top: 3px;
+  right: 0px;
+  background: none;
+  font-size: 40px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.List{
+  list-style: none;
+  background-color: #afafaf61;
+  border-radius: 30px;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  font-size: 22px;
+  font-family: fantasy;
+  border-color: black;
+  border-style: solid;
+  color: black;
+  position: relative;
+}
+.List:hover{mix-blend-mode: hard-light;}
+
+.DeleteListButton{
+  background: none;
+  border: none;
+  top: 0px;
+  position: absolute;
+  right: 14px;
+  font-size: 24px;
+  color: #ff000082;
+  cursor:pointer;
+}
+.DeleteListButton:hover{
+  color:red;
+}
+.Firstlist{
+  display: flex;
+  flex-direction: column;
+}
+.AddFirstListButton{
+  height: 36px;
+  border-color: #5151cc;
+  background-color: #565dbc;
+  border-width: 4px;
+  border-radius: 19px;
+  color: #ffffff85;
+}
+.AddFirstListButton:hover{
+  cursor: pointer;
+  color: white;
+  border-color: blue;
+  background-color: blue;
+}
