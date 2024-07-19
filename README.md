@@ -1,4 +1,4 @@
-# react Cine Project
+# React Cine Project
 
 ## Requirements
 
