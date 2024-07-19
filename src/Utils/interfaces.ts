@@ -116,6 +116,7 @@ export interface dataType {
     Review: string;
     Date: string;
     FilmId: number;
+    ImageUrl: string;
   }
   export interface Reviews{
     NumReviews: number;

@@ -1,20 +1,20 @@
 import React, { useRef, useState } from "react";
 import "./CSS/Sign.css";
 import { FaUserCheck, FaUserEdit } from "react-icons/fa";
+import { FiAlertTriangle } from "react-icons/fi";
 import { emailValidation, equal, erroresSigninCliente, passValidation, repeatedpassValidation } from "../Utils/ErrorHanding";
 import { Login_bd, Signin_bd } from "../Utils/BD_request";
 import { User } from "../Utils/interfaces";
 import { ImCross } from "react-icons/im";
 import Swal from "sweetalert2";
-// import jwt  from "jsonwebtoken";
-
+import Cookies from "universal-cookie";
 
 const URL_LOGIN = "http://localhost/bd-back/login.php";
 const URL_SIGNIN = "http://localhost/bd-back/signin.php";
 
 
 
-export function Sign(props: { userData: Function; tokenData:Function, close_profile: Function}) {
+export function Sign(props: { userData: Function; close_profile: Function}) {
   //errores servidor
   const User_login = useRef<HTMLInputElement>(null);
   const Pass_login = useRef<HTMLInputElement>(null);
@@ -28,11 +28,21 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
   const [esperaLogin, setEsperaLogin] = useState(false);
   const [esperaSignin, setEsperaSignin] = useState(false);
 
+
   //errores durante el escrito del Signin
   const [passSignin, setPassSignin] = useState("");  
   const [errorinputemail, seterrorinputemail] = useState("");
   const [errorinputpass, seterrorinputpass] = useState("");
   const [errorinputrepeatedpass, seterrorinputrepeatedpass] = useState("");
+  const [howToPassw,setHowToPassw ] = useState(false);
+
+
+
+  //Guía de como poner contraseña
+  const howTo = (e:any) =>{
+    e.preventDefault();
+    setHowToPassw(!!!howToPassw);
+  } 
 
   //errores cliente
   const [erroresCliente,setErroresCliente] = useState<string>("");
@@ -50,15 +60,14 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
     //recogemos los errores de la base de datos.
     setErrorLogin(resp.error);
     setEsperaLogin(false);
-
     if(resp.conectado){
       // llenamos de datos el data_user.
       const user_data: User = resp;
       props.userData(user_data);
 
-      //le damos un token 
-      // const token = jwt.sign(resp, 'secretpass', {expiresIn:"3m"});
-
+      const cookies = new Cookies();
+      cookies.set("User", user_data.UserName, {path: '/', expires: (new Date(Date.now()+60 * 60 * 24*365))});
+      
       successAction("Conectado correctamente");
       //cerramos el div de profile
       props.close_profile();
@@ -102,6 +111,8 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
 
       if(resp.conectado){
         successAction("Usuario creado, conectado correctamente");
+        const cookies = new Cookies();
+        cookies.set("User", user_data.UserName, {path: '/'});
         //cerramos el div de profile
         props.close_profile();
       }
@@ -194,6 +205,8 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
               seterrorinputrepeatedpass(verify_rep_pass);
             }}
           ></input>
+          {howToPassw ?<><div className="HowtoText"> La contraseña debe estar entre 8 y 16 y contener al menos una letra mayúscula, una letra minúscula y un número </div>
+          <div className="pico-bocadillo-abajo"></div></>:null}
           </div>
           <div className="div-div-input">
           <input 
@@ -230,6 +243,7 @@ export function Sign(props: { userData: Function; tokenData:Function, close_prof
         </form>
       </div>
       <div className="pico-bocadillo"></div>
+      <button onClick={e=>howTo(e)} className="alert-password">< FiAlertTriangle /></button>
     </>
   );
 }

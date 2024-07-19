@@ -104,6 +104,7 @@ export function MovieCard(props: {
   useEffect(() => {
     if (props.page.includes("list")) {
       setdeletebuttonView(true);
+
     }
   }, []);
 
@@ -131,7 +132,8 @@ export function MovieCard(props: {
           alt={props.film.title}
         />
         <div className="titles">{props.film.title}</div>
-        {deletebuttonView ? null : (
+        {!props.user.conectado || deletebuttonView
+         ? null : (
           <button className="filmOptions" onClick={(e) => filmOptions(e)}>
             <IoMdOptions />
           </button>

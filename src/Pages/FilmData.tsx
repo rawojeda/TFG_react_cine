@@ -69,7 +69,6 @@ export function FilmData(props: { user: User }) {
       confirmButtonText: 'Sí, borrar!'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        
         const data= {userId: +userId}
         const resp = await deleteComment_bd(URL_DELETECOMMMENT, data);
         Swal.fire(

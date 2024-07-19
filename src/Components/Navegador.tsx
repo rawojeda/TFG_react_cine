@@ -14,7 +14,6 @@ import images from "../Images/images";
 
 export function Navegador(props: {
   userData: Function;
-  tokenData: Function;
   user: User;
 }) {
   const [toggle_press, settoggle_press] = useState<boolean>(false);
@@ -69,7 +68,7 @@ export function Navegador(props: {
       {profile_press ? 
         props.user.conectado
           ? <UserOptions userData ={props.userData}user={props.user} close_profile={showprofile}/>
-          : <Sign userData ={props.userData} tokenData={props.tokenData} close_profile={showprofile}/>
+          : <Sign userData ={props.userData} close_profile={showprofile}/>
         : null}
 
       {/* toggle desplesgable */}

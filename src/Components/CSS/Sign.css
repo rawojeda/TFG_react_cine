@@ -8,7 +8,7 @@
   right: 0px;
   height: auto;
   align-items: flex-start;
-  z-index: 100;
+  z-index: 5;
 }
 @media screen and (max-width: 887px) {
   .Sign-area {
@@ -24,6 +24,10 @@
   }
   .Sign {
     padding: 0px 50px 0px 50px;
+  }
+  .alert-password{
+    top: 665px !important;
+    right: 50px !important;
   }
 }
 .image-nav-sign {
@@ -61,6 +65,7 @@
   font-size: 16px;
   color: #c2c7cb;
   font-weight: 700;
+  position: relative;
 } 
 .valid{
   background-color: #76d87852;
@@ -149,4 +154,39 @@
   color: #842029;
   cursor: pointer;
   height: 24px;
+}
+.alert-password{
+  position: absolute;
+  top: 322px;
+  right:90px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 21px;
+  cursor: pointer;
+  z-index: 10;
+}
+.alert-password:hover{
+  color: #8389d7;
+}
+.HowtoText{
+  position: absolute;
+  z-index: 1;
+  background-color: black;
+  padding: 10px;
+  top: -111px;
+  right: -85px;
+  left: 96px;
+}
+.pico-bocadillo-abajo{
+  position: absolute;
+  top: -1px;
+  right: 7px;
+  width: 0;
+  height: 0;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  z-index: 1;
 }

@@ -63,7 +63,7 @@ export function MovieViewer(props: {
           next={() => {
             setTimeout(function () {
               setPage((prevPage) => prevPage + 1);
-            }, 2000);
+            }, 1000);
           }}
           loader={<Spinner />}
         >

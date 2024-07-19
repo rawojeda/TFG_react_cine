@@ -18,9 +18,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "crypto": [
+        "node_modules/crypto-js"
+      ]}
   },
   "include": [
     "src"
-    ,"webpack.config.ts"  ]
+    ,"webpack.config.ts", "webpack.config.js"  ]
 }

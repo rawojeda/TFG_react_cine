@@ -13,24 +13,37 @@ import { Reviewss } from "./Reviews";
 import { ReviewDetail } from "./ReviewDetail";
 import { RecomendationPage } from "../Components/RecomendationPage";
 import { ListPage } from "./ListPage";
+import { NotFound } from "./NotFound";
+import Cookies from "universal-cookie";
+import { getUserWithCookie } from "../Utils/BD_request";
 
 export function HomeStructure() {
   const [user, setUser] = useState<User>({conectado:false, UserName:"", Password:"", Email: "", Admin: 0, UserId:0});
-  const [token, setToken] = useState<string>();
-  
+  const URL_GETUSER = "http://localhost/bd-back/getUser.php";
+
   const userData = (user: User) => {
     setUser(user);
   };
-  const tokenData = (token: string) =>{
-    setToken(token);
+
+  const getCookieUser = async (cookieUser:string) =>{
+    const resp= await getUserWithCookie(URL_GETUSER,{username:cookieUser});
+    const user_data: User = resp;
+    setUser(user_data);
   }
   useEffect(() => {
+    const cookies = new Cookies();
+    if(!user.conectado){
+      const cookieUser:string= cookies.get('User');
+      if(cookieUser!==undefined){
+        getCookieUser(cookieUser);
+      }
+    }
     console.log(user);
-  }, [user,token])
+  }, [user])
   
     return (
       <Router>
-        <Navegador userData={userData} tokenData={tokenData} user={user}/>
+        <Navegador userData={userData} user={user}/>
         <div className="contenido">
           <Switch>
             <Route exact path="/">
@@ -67,10 +80,7 @@ export function HomeStructure() {
             <Route exact path="/Listas/:userId">
               {user.conectado ? <Lists/>: <Redirect to={"/"}/>}
             </Route>
-             <Route exact path="/searcher/">
-              no hay busquedas con eso
-            </Route>
-            <Route path="/">404</Route>
+            <Route path="/"><NotFound/></Route>
           </Switch>
         </div>
         <Footer />

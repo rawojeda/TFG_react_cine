@@ -3,10 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import HomeStructure from "./Pages/HomeStructure";
 
-
 ReactDOM.render(
   <React.StrictMode>
-      <HomeStructure />
+    <HomeStructure />
   </React.StrictMode>,
   document.getElementById("root")
 );

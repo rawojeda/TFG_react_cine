@@ -2,54 +2,70 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    background-color: #595073;
 }
+
+
+/* INTRODUCCION */
+.Introduction-self-container{
+    display: flex;
+    flex-direction: row-reverse;
+    width: -webkit-fill-available;
+    background-color: rgb(0 0 0 / 40%);
+    margin-inline: 4%;
+    margin-top: 4%;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 10%;
+    border-radius: 86px;
+    box-shadow: 7px 7px rgb(62 62 64 / 35%);
+}
+.Introduction-self-text{
+    margin: 2%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Welcome-text{
+    font-size: 50px;
+    letter-spacing: 3px;
+}
+.description-introductions{
+    letter-spacing: 4px;
+    font-size: 32px;
+    margin-top: 0;
+    opacity: 0.8;
+}
+.description-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.description-introduction{
+    list-style: none;
+    padding: 0px 20px 25px 0px;
+    max-width: 300px;
+    margin: 1%;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+
+
+
+/* NOTICIAS */
 .Notices-Carrousel{
     margin: 1%;
-    border-style: solid;
     width: fit-content;
     padding: 1%;
     border-radius: 2%;
     text-align: center;
-    background-color: #8389d726;
+    background-color: #8389d766;
+    box-shadow: 14px 14px rgb(53 48 69 / 85%);
 }
-@media screen and (max-width: 896px) {
-   .Notices-Carrousel{
-        margin: 0;
-        width: -webkit-fill-available;
-        text-align: -webkit-center;
-   }
-    .Principal-img{
-        width: 441px !important;   
-    }
-    .container-S-images{
-        grid-template-columns: repeat(2, 219px) !important;
-        gap: 2px !important;
-    }
-    .MoveButton-Left{
-        height: 253px !important;
-    }
-    .MoveButton-Right{
-        height: 253px !important;
-    }
-    .Secondary-img{
-        margin-left: -37%;
-    }
-    .Carrousel-Filmname{
-        display: none;
-    }
-    .Recomendations{
-        width: -webkit-fill-available;
-    }
-    .buttons-AfterBeforeOptions{
-        margin-inline: 1% !important;
-    }
-  }
-  @media screen and (max-width: 534px) {
-    .buttons-AfterBeforeOptions {
-        flex-wrap: wrap;
-        justify-content: center!important;
-    }
-  }
   .title-carrousel{
     font-size: 22px;
     font-weight: 900;
@@ -60,30 +76,13 @@
     width: fit-content;
 }
 .Principal-img{
-    width: 804px;
-    opacity: 0.5;
-}
-.Carrousel-Filmname{
-    position: absolute;
-    top: 45%;
-    font-size: 35px;
-    font-weight: 900;
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    max-width: 83%;
-    color: black;
-}
-.Carrousel-Filmname:hover{
-    cursor: pointer;
-    text-decoration: underline;
+    width: 939px;
+    opacity: 0.6;
 }
 .Carrousel-Notice-Title{
     position: absolute;
-    bottom: 20%;
-    font-size: 27px;
+    bottom: 50%;
+    font-size: 34px;
     font-weight: 800;
     margin-top: 0;
     margin-left: auto;
@@ -91,18 +90,33 @@
     left: 0;
     right: 0;
     max-width: 80%;
-    color: black;
+    color: white;
 }
 .Carrousel-Notice-Title:hover{
     cursor: pointer;
     text-decoration: underline;
 }
-
-
+.Carrousel-Notice-Resume{
+    position: absolute;
+    bottom: 10%;
+    font-size: 30px;
+    font-weight: 800;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    max-width: 80%;
+    color: white;
+}
+.Carrousel-Notice-Resume:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
 .MoveButton-Left{
     position: absolute;
-    height: 454px;
-    width: 80px;
+    height: 508px;
+    width: 92px;
     z-index: 1;
     top: 0;
     left: 0;
@@ -114,8 +128,8 @@
 }
 .MoveButton-Right{
     position: absolute;
-    height: 454px;
-    width: 80px;
+    height: 508px;
+    width: 92px;
     z-index: 1;
     top: 0;
     right: 0;
@@ -136,28 +150,52 @@
 
 .container-S-images{
     display: grid;
-    grid-template-columns: repeat(2, 400px);
+    grid-template-columns: repeat(4, 231px);
     gap: 5px;
     justify-content: center;
-    
 }
 .container-S-image{
     overflow:hidden;
+    position: relative;
+    opacity: 0.75;
+    transition: transform .1s;
+    cursor: pointer;
+}
+.container-S-image:hover{
+    transform: scale(1.2);
+    z-index: 1;
+    opacity: 1;
 }
 .Secondary-img{
-    opacity: 0.75;
+    width: 300px;
+}
+
+.Carrousel-Secondary-Notice-Title{
+    position: absolute;
+    position: absolute;
+    bottom: 8%;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    max-width: 80%;
+    color: white;
+}
+.Carrousel-Secondary-Notice-Title:hover{
+    text-decoration: underline;
 }
 
 
 
-
-
-
+/* RECOMENDATIONS */
 .Recomendations{
-    background-color: #8389d726;
+    background-color: #8389d766;
     text-align: center;
     margin: 1%;
-    border-style: solid;
+    box-shadow: 14px 14px rgb(53 48 69 / 85%);
     padding: 1%;
     border-radius: 2%;
     display: flex;
@@ -179,11 +217,10 @@
     font-size: 22px;
     font-family: fantasy;
     border-color: black;
-    border-style: solid;
     color: black;
-    border-width: 4px;
     padding: 25px 66px 25px 66px;
     margin-bottom: 10px;
+    box-shadow: 7px 10px rgb(53 48 69 / 85%);
 }
 .SeeMore-Recomendations:hover{
     mix-blend-mode: hard-light;
@@ -194,3 +231,58 @@
 .flex-str{
     align-self: flex-start;
 }
+
+
+
+
+
+/* MODELO RESPONSIVE */
+@media screen and (max-width: 1030px) {
+   .Notices-Carrousel{
+        margin: 0;
+        width: -webkit-fill-available;
+        text-align: -webkit-center;
+        box-shadow: 0px 0px;
+   }
+    .Principal-img{
+        width: 441px !important;   
+    }
+    .container-S-images{
+        grid-template-columns: repeat(2, 219px) !important;
+        gap: 2px !important;
+    }
+    .MoveButton-Left{
+        height: 238px;
+        width: 54px;
+    }
+    .MoveButton-Right{
+        height: 238px;
+        width: 54px;
+    }
+    .Secondary-img{
+        margin-left: -37%;
+    }
+    .Carrousel-Filmname{
+        display: none;
+    }
+    .Recomendations{
+        width: -webkit-fill-available;
+        box-shadow: 0px 0px;
+    }
+    .buttons-AfterBeforeOptions{
+        margin-inline: 1% !important;
+    }
+    .Carrousel-Notice-Resume{
+        display: none;
+    }
+    .Carrousel-Notice-Title{
+        top: 10%;
+    }
+  }
+  @media screen and (max-width: 534px) {
+    .buttons-AfterBeforeOptions {
+        flex-wrap: wrap;
+        justify-content: center!important;
+    }
+  }
+ 

@@ -11,9 +11,10 @@ import one_half_stars from "./2_1_stars.png";
 import one_stars from "./1_stars.png";
 import zero_half_stars from "./1_0_stars.png";
 import zero_stars from "./0_stars.png";
-// import logo_image from "./RWILDER.png";
+import logo_image3 from "./RWILDER.png";
 import logo_image from "./logo.png";
-// import logo_image from "./logoRwild.png";
+import logo_imag2 from "./logoRwild.png";
+import notfoundgif from "./notfound.gif";
 
 export default {
     "placeholder": placeholder,
@@ -28,5 +29,8 @@ export default {
     "one_stars": one_stars,
     "zero_half_stars": zero_half_stars,
     "zero_stars": zero_stars,
-    "logo": logo_image
+    "logo": logo_image,
+    "logo2": logo_imag2,
+    "logo3": logo_image3,
+    "notfoundgif": notfoundgif
 };

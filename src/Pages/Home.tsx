@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import images from "../Images/images";
 import { get } from "../Utils/Api_get";
 import { Collectionsget, Recommendsget, Reviewsget } from "../Utils/BD_request";
 import { filmData, Recomendations,Collection, Review, Reviews } from "../Utils/interfaces";
@@ -10,7 +11,7 @@ export function Home() {
   // REVIEWS
   const URL_GETREVIEWS = "http://localhost/bd-back/getReviews.php";
   const [reviews, setReviews] = useState<Review[]>([]);
-  const [ImgPP, setImgPP] = useState<number[]>([0,1,2]);
+  const [ImgPP, setImgPP] = useState<number[]>([0,1,2,3,4]);
   const [films, setFilms] = useState<filmData[]>([]);
   
   
@@ -36,27 +37,28 @@ export function Home() {
     });
   };
  
+
   function moveLeft(){
-    if(ImgPP[0]===0){
-      setImgPP([4,0,1]);
-    }else if(ImgPP[1]===0){
-      setImgPP([3,4,0]);
-    }else if(ImgPP[2]===0){
-      setImgPP([2,3,4]);
-    }else {
-      setImgPP([ImgPP[0]-1,ImgPP[1]-1,ImgPP[2]-1]);
-    }
+    var imgpp:number[] = [];
+    ImgPP.map((img)=>{
+      if(img===0){
+        imgpp.push(4);
+      }else{
+        imgpp.push(img-1);
+      }
+      setImgPP(imgpp);
+    });
   }
   function moveRight(){
-    if(ImgPP[0]===4){
-      setImgPP([0,1,2]);
-    }else if(ImgPP[1]===4){
-      setImgPP([4,0,1]);
-    }else if(ImgPP[2]===4){
-      setImgPP([3,4,0]);
-    }else {
-      setImgPP([ImgPP[0]+1,ImgPP[1]+1,ImgPP[2]+1]);
-    }
+    var imgpp:number[] = [];
+    ImgPP.map((img)=>{
+      if(img===4){
+        imgpp.push(0);
+      }else{
+        imgpp.push(img+1);
+      }
+      setImgPP(imgpp);
+    });
   }
 
 
@@ -84,27 +86,56 @@ export function Home() {
 
   return (
     <div className="Home">
+      <div className="Introduction-self-container">
+          <div className="Introduction-self-text">
+            <h1 className="Welcome-text">BIENVENIDO</h1>
+            <h3 className="description-introductions">A UN ENTORNO DONDE:</h3>
+            <div className="description-div">
+              <div className="description-div-left">
+                <li className="description-introduction">Compartir <strong>opiniones.</strong></li>
+                <li className="description-introduction">Descubrir nuevas <strong>cintas.</strong></li>
+              </div>
+              <div className="description-div-right">
+                <li className="description-introduction">Conocer opiniones.</li>
+                <li className="description-introduction">Crear/Organizar tu propio repositorio de películas..</li>
+              </div>
+            </div>
+          </div>
+          <div className="Introduccion-self-image">
+            <img className="image-logo-introductionself" src={images.logo3} alt="logo"/>
+          </div>
+      </div>
       {reviews.length ===5 && films.length===5 ?  (
         <>
-        <div className="Notices-Carrousel">
-            <p className="title-carrousel"> NOTICIAS:</p>
+         <div className="Notices-Carrousel">
+            <p className="title-carrousel"> NOVEDADES: </p>
             <div className="container-PP-image">
               <button className="MoveButton-Left" onClick={moveLeft}><AiOutlineLeft/></button>
-              <img className="Principal-img" src={"https://image.tmdb.org/t/p/w400"+films[ImgPP[0]].backdrop_path} alt={films[ImgPP[0]].title}/>
+              <img className="Principal-img" src={reviews[ImgPP[0]].ImageUrl} alt={films[ImgPP[0]].title}/>
               <button className="MoveButton-Right" onClick={moveRight}><AiOutlineRight/></button>
-              <p className="Carrousel-Filmname">{films[ImgPP[0]].title}</p>
-              <p className="Carrousel-Notice-Title">{reviews[ImgPP[0]].Title}</p>
+              <Link className="Carrousel-Notice-Title" to={"/Review/"+ reviews[ImgPP[0]].FilmId}>{reviews[ImgPP[0]].Title}</Link>
+              <Link className="Carrousel-Notice-Resume" to={"/Review/"+ reviews[ImgPP[0]].FilmId}> {reviews[ImgPP[0]].Resumen} </Link>
             </div>
             <div className="container-S-images">
-              <div className="container-S-image">
-                <img className="Secondary-img" src={"https://image.tmdb.org/t/p/w400"+films[ImgPP[1]].backdrop_path} alt={films[ImgPP[1]].title}/>
-              </div>
-              <div className="container-S-image">
-                <img className="Secondary-img" src={"https://image.tmdb.org/t/p/w400"+films[ImgPP[2]].backdrop_path} alt={films[ImgPP[2]].title}/>
-              </div>
+              <Link className="container-S-image" to={"/Review/"+ reviews[ImgPP[1]].FilmId}>
+                <img className="Secondary-img" src={reviews[ImgPP[1]].ImageUrl} alt={films[ImgPP[1]].title}/>
+                <p className="Carrousel-Secondary-Notice-Title" >{reviews[ImgPP[1]].Title}</p>
+              </Link>
+              <Link className="container-S-image" to={"/Review/"+ reviews[ImgPP[2]].FilmId}>
+                <img className="Secondary-img" src={reviews[ImgPP[2]].ImageUrl} alt={films[ImgPP[2]].title}/>
+                <p className="Carrousel-Secondary-Notice-Title">{reviews[ImgPP[2]].Title}</p>
+              </Link>
+              <Link className="container-S-image" to={"/Review/"+ reviews[ImgPP[3]].FilmId}>
+                <img className="Secondary-img" src={reviews[ImgPP[3]].ImageUrl} alt={films[ImgPP[3]].title}/>
+                <p className="Carrousel-Secondary-Notice-Title" >{reviews[ImgPP[3]].Title}</p>
+              </Link>
+              <Link className="container-S-image" to={"/Review/"+ reviews[ImgPP[4]].FilmId}>
+                <img className="Secondary-img" src={reviews[ImgPP[4]].ImageUrl} alt={films[ImgPP[4]].title}/>
+                <p className="Carrousel-Secondary-Notice-Title">{reviews[ImgPP[4]].Title}</p>
+
+              </Link>
             </div>
         </div>
-        
         </>
       ) : null}
       {recommends.length>0 ?  (
@@ -119,7 +150,7 @@ export function Home() {
             </ul>
           </div>
           
-          <div className= {recommendPP===0 ? "buttons-AfterBeforeOptions flex-str":recommendPP+1===recommends.length? "buttons-AfterBeforeOptions flex-nd" :"buttons-AfterBeforeOptions"}>
+          <div className= {recommendPP===0 ? "buttons-AfterBeforeOptions flex-nd":recommendPP+1===recommends.length? "buttons-AfterBeforeOptions flex-str" :"buttons-AfterBeforeOptions"}>
             {recommendPP!==0 ? <button className="SeeMore-Recomendations" onClick={previusRecommend}>ANTERIOR</button>: null}
             {recommendPP+1!==recommends.length? <button className="SeeMore-Recomendations" onClick={nextRecommend}>SIGUIENTE</button>:null}
           </div>
