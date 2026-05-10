@@ -1,5 +1,13 @@
 # React Cine Project
 
+## Overview
+<div style="display:flex; overflow-x:auto; gap:10px; padding:10px;">
+   <img src="https://github.com/user-attachments/assets/1db7ae32-209e-494e-84aa-3af843ba69aa" width="300"/>
+   <img src="https://github.com/user-attachments/assets/1c1b6f2c-62ea-4447-82e5-7440bfa6199d" width="300"/>
+   <img src="https://github.com/user-attachments/assets/f60a415b-6e7b-4d44-9db6-4cba53e1d354" width="300"/>
+</div>
+
+
 ## Requirements
 
 Before setting up this project, ensure you have the following installed:
